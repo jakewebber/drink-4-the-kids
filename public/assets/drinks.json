@@ -2,31 +2,47 @@
     {
         "id": 1,
         "name": "100% That Grinch",
-        "description": "testing a description"
+        "ingredients": ["gin", "basil", "lemon"],
+        "description": "testing a description",
+        "imageUrl": "/images/buddy.jpg"
     },
     {
         "id": 2,
         "name": "Whiskey Blitzen",
-        "description": "testing another description"
+        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
+        "description": "testing another description",
+        "imageUrl": "/images/buddy.jpg"
     },
     {
         "id": 3,
         "name": "Whiskey 2",
-        "description": "testing another description"
+        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
+        "description": "testing another description",
+        "imageUrl": "/images/buddy.jpg"
+
     },
     {
         "id": 4,
         "name": "Whiskey 3",
-        "description": "testing another description"
+        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
+        "description": "testing another description",
+        "imageUrl": "/images/buddy.jpg"
+
     },
     {
         "id": 5,
         "name": "Whiskey 4",
-        "description": "testing another description"
+        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
+        "description": "testing another description",
+        "imageUrl": "/images/buddy.jpg"
+
     },
     {
         "id": 6,
         "name": "Whiskey 5",
-        "description": "testing another description"
+        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
+        "description": "testing another description",
+        "imageUrl": "/images/buddy.jpg"
+
     }
 ]
