@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<script>
+let urlParams = new URLSearchParams(window.location.search);
+let currentId = urlParams.get('id');
+
+window.onload = function() {
+      if(currentId){
+        // highlight and navigate to the order
+        document.getElementById('order-id-' + currentId).classList.add('current-order');
+        // show the payment footer after an order
+        document.getElementById('db-footer').classList.add('d-inline-block');
+      }
+} 
+</script>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body class="orders">
+
+<%- include ("../partials/nav.ejs") %>
+
+<%
+const statusClass = {
+    waiting: "fas fa-hourglass-half waiting-color",
+    inprogress: "far fa-hand-point-left",
+    complete: "far fa-check-square finished-color"
+};
+%>
+
+<div class="container-fluid mt-5">
+<div class="order-grid">
+  <div class="row fixed-header">
+        <div class="col-5" data-field="" data-sortable="true">Name</div>
+        <div class="col-5" data-field="" data-sortable="true">Order</div>
+        <div class="col-3 d-none" data-field="" data-sortable="true">Date</div>
+  </div>
+    <% var count = 0; %>
+    <% results.forEach((order)=>{  %>
+  <div id="order-id-<%=order.id%>" class="row main-row pt-2" data-index="<%= count %>">
+    <div class="order-cell col-5"><%= order.name %></div>
+    <div class="order-cell col-5"><%= order.drink_order %> </div>
+    <div class="order-cell col-3 d-none">
+      <%= new Intl.DateTimeFormat('en-US', 
+      { month: 'short', day: 'numeric'}
+      ).format(order.date) %>
+        <div class="order-cell-small">
+        <%= new Intl.DateTimeFormat('en-US', 
+        {hour: 'numeric', minute: 'numeric'}
+        ).format(order.date) %>
+      </div>
+      </div>
+    <div class="col-2 px-4"><i class="status-icon fa <%=statusClass[order.status] %>"></i></div>
+    <span class="col-12 comment"><i class="far fa-comment-dots px-2"></i><%= order.comments %></span>
+  </div>
+    <% }) %>
+</div>
+
+
+<div id="db-footer">
+<%- include ("../partials/footer.ejs") %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+body{
+  background-image: url("../images/snowflakes.jpg");
+  background-position: top;
+}
+.jumbotron {
+  color: white;
+  padding-bottom: 20px; }
+
+  .navbar + .jumbotron {
+    margin-top: -20px; }
+
+.nav-link{
+  border-radius: 8px;
+}
+.nav-link:hover {
+  background-color: rgba(1, 117, 46, 0.4) !important;
+}
+
+.nav-item {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.navbar-toggler {
+  background-color: rgb(2, 173, 2);
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.navbar-toggler.collapsed{
+  background-color: rgba(1, 117, 46, 0.699);
+}
+
+.navbar-toggler .fa-chevron-up {
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.navbar-toggler.collapsed .fa-chevron-up {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.light-bg{
+  border-radius: 10px;
+  background-color: #ddd;
+}
+h1{
+  font-family: 'Pacifico', cursive;
+  text-shadow:1px 1px 6px rgb(0 0 0 / 92%), 4px 2px 7px rgb(0 0 0 / 80%)
+
+}
+.title{
+  color: rgb(27, 158, 77);
+}
+.payment-icon{
+  background-size: 47px 47px;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  border: 1px solid #666;
+  text-align: center;
+  display: inline-flex;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.venmo{
+  background-image: url("../images/venmo.png");
+}
+.cashapp{
+  background-image: url("../images/cashapp.png");
+}
+.paypal{
+  background-image: url("../images/paypal.png");
+}
+
+.footer{
+  position:fixed;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+  text-align: center;
+}
+
+h2{
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5em;
+}
+
+p{
+  white-space: pre-wrap;
+  color: #333;
+}

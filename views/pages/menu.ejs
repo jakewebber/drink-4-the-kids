@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <%- include ("../partials/header.ejs") %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $.getJSON("/assets/drinks.json", function (result) {
+          result.forEach((drink, i) => {
+              $("#menu-list").append(`<div class="light-bg my-2">  ${drink.name} 
+              <div> ${drink.description} </div>
+            </div>
+              `
+              );
+          });
+          $("#menu-list").append("<option>Custom....</option>");
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <%- include ("../partials/nav.ejs") %>
+
+  <div class="container pt-4">
+      <h1 class="title">Cocktails</h1>
+      <div class="d-flex flex-column">
+        <h2 class="text-muted">Hand-crafted as fuck</h2>
+        <div id="menu-list">
+
+        </div>
+      </div>
+  </div>
+
+</div>
+</body>
+</html>

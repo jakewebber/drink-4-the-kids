@@ -1,0 +1,87 @@
+body.orders{
+background: #222;    
+}
+#db-footer{
+    display: none;
+  }
+
+
+.order-grid{
+    color: #333;
+    margin-bottom: 100px;
+}
+  
+  .waiting-color{
+    color: #555 !important;
+  }
+  
+  .finished-color{
+    color: green !important;
+  }
+  
+  .current-order {
+    background-color: rgb(148, 194, 148) !important;
+    font-weight: bold;
+  }
+
+  .main-row{
+      margin-top: 10px;
+      min-height: 70px;
+      background: #eee;
+      border-radius: 10px;
+  }
+
+  .comment{
+      border-top: 1px solid rgba(0, 0, 0, 0.101);;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .status-icon{
+      font-size: 25px;
+      position: absolute;
+  }
+  
+  .main-row .order-cell{
+      border-right: 1px solid #aaa;
+  }
+
+  .order-cell-small{
+      font-size: 12px;
+  }
+
+  .fixed-header{
+    color: #eee;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+      background: #222;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      z-index: 2;
+  }
+
+  .fixed-header div{
+      border-right: 1px solid #666;
+  }
+
+  .fixed-header div:last-child{
+    border-right: 0;
+}
+
+#location-error-modal .modal-content{
+  background: #eee;
+}
+
+#date-error-modal .modal-content{
+  background: #eee;
+}
+
+.modal-footer{
+  border-top: 1px solid #999;
+  background: #ccc;
+}
+
+label{
+  color: white;
+}
