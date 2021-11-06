@@ -205,13 +205,42 @@
     transition: width 0.4s ease;
   }
   
-
+  #menu-list{
+    font-family: 'Sora', sans-serif;
+  }
   .drink-img{
     border-radius: 6px;
-    border: 1px solid #aaa;
+    box-shadow: 0px 0px 10px rgb(0,0,0); /* shadow */
   }
 
   .drink-title{
     font-weight: 800;
     font-size: 1.1em;
+    font-family: 'Sora', sans-serif;
+    text-transform: uppercase;
+    color: rgb(27, 105, 57);
+  }
+
+  .drink-description {
+    font-size: .8em;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .drink-recipe {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-size: .7em;
+    font-family: 'Sora', sans-serif;
+    text-transform: capitalize;
+  }
+
+  .buddy-the-elf{
+    position:absolute;
+    bottom: 0; 
+    right: 0;
+    overflow:hidden;
+  }
+
+  .green{
+    color: rgb(16, 187, 16);
   }

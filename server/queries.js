@@ -27,7 +27,7 @@ const createOrder = (request, response) => {
         throw error;
       }
       var id = result.rows[0].id;
-      var url = result && result.rows.length > 0 ? '/db?id=' + id + '#' + id : '/db';
+      var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
       response.redirect(url);
     })
   }

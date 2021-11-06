@@ -99,3 +99,7 @@ p{
   white-space: pre-wrap;
   color: #333;
 }
+
+.main-row::nth-of-type(1){
+  margin-top: 50px;
+}

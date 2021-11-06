@@ -3,46 +3,70 @@
         "id": 1,
         "name": "100% That Grinch",
         "ingredients": ["gin", "basil", "lemon"],
-        "description": "testing a description",
-        "imageUrl": "/images/buddy.jpg"
+        "description": "Just took a DNA test turns out it’s 30% alcohol",
+        "imageUrl": "/images/drinks/ginbasilsmash.jpg"
     },
     {
         "id": 2,
         "name": "Whiskey Blitzen",
         "ingredients": ["bourbon", "egg white", "maple", "lemon"],
-        "description": "testing another description",
-        "imageUrl": "/images/buddy.jpg"
+        "description": "A crowd favorite. Reindeer Fuel baby",
+        "imageUrl": "/images/drinks/whiskeysour.jpg"
     },
     {
         "id": 3,
-        "name": "Whiskey 2",
-        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
-        "description": "testing another description",
-        "imageUrl": "/images/buddy.jpg"
-
+        "name": "MISTLETOE MARGARITA",
+        "ingredients": ["tequila", "cointreau", "lime", "agave", "jalapeno/berry/mezcal optional"],
+        "description": "We don’t care if it’s out of season. Get it strawberry, smokey, spicy, or classic.",
+        "imageUrl": "/images/margarita.jpg"
     },
     {
         "id": 4,
-        "name": "Whiskey 3",
-        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
-        "description": "testing another description",
+        "name": "Santa's Old Fashioned",
+        "ingredients": ["Bourbon", "all-spice dram", "angostura", "orange zest", "Luxardo cherry"],
+        "description": "Cookies are just St Nick's other vice",
         "imageUrl": "/images/buddy.jpg"
-
+    },
+    {
+        "id": 4,
+        "name": "Ms Claus's Medicine",
+        "ingredients": ["mezcal", "yellow chartreuse", "aperol", "lime", "rosemary"],
+        "description": "It’s good and strong. Doctor’s orders",
+        "imageUrl": "/images/buddy.jpg"
     },
     {
         "id": 5,
-        "name": "Whiskey 4",
-        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
-        "description": "testing another description",
+        "name": "Little Rummer Boy",
+        "ingredients": ["jamacian rum", "pineapple", "orange", "coconut", "nutmeg"],
+        "description": "Not so little. Pa rum pum pum pum",
         "imageUrl": "/images/buddy.jpg"
-
     },
     {
         "id": 6,
-        "name": "Whiskey 5",
-        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
-        "description": "testing another description",
+        "name": "Gin-ger Snap",
+        "ingredients": ["Gin", "Ginger", "Aperol", "lemon"],
+        "description": "Lots of gin, lots of ginger, lots of snap",
         "imageUrl": "/images/buddy.jpg"
-
+    },
+    {
+        "id": 7,
+        "name": "YippieKaYayMotherfu-",
+        "ingredients": ["Vodka", "Averna Amaro", "Espresso"],
+        "description": "For those late nights slamming presents down chimneys",
+        "imageUrl": "/images/buddy.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Mulled Cider",
+        "ingredients": ["Rum or Whiskey", "Mulled Cider", "Winter Spices"],
+        "description": "Have it hot or cold",
+        "imageUrl": "/images/buddy.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Eggnog",
+        "ingredients": ["Homemade eggnog", "bourbon", "rum", "vanilla", "nutmeg"],
+        "description": "It’s eggsquisite. Get it while it lasts",
+        "imageUrl": "/images/buddy.jpg"
     }
 ]

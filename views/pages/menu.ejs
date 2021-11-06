@@ -11,13 +11,13 @@
             var formattedIngredients =
               $("#menu-list").append(`
               <div class="row light-bg my-2 py-2">
-                <div class="col-4">
-                  <img class="drink-img" src="${drink.imageUrl}" width="100" height="100"></img>
+                <div class="col-5">
+                  <img class="drink-img" src="${drink.imageUrl}" width="125" height="150"></img>
                   </div>
-                <div class="col-8">
+                <div class="col-7">
                 <div class="drink-title font-monospace">${drink.name}</div>
-                <div class="drink-recipe"> ${ drink.ingredients.join(" / ")} </div>
                 <div class="drink-description fst-italic"> ${drink.description} </div>
+                <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
                 <a class="btn btn-success" href="/order?id=${drink.id}">ORDER</a>
                 </div>
               </div>
@@ -36,13 +36,13 @@
   <div class="container pt-4">
       <h1 class="title">Cocktails</h1>
 
-      <div class="d-flex flex-column">
-        <h2 class="text-muted">Hand-crafted as fuck</h2>
-        <div id="menu-list">
-
+      <div class="mx-1">
+        <h2 class="text-muted text-center">Hand-crafted as fuck</h2>
+        <div id="menu-list"></div>
         </div>
       </div>
   </div>
+  <h2 class="text-center green">Ask what else we can whip up for you</h2>
   <%- include ("../partials/xmaslights.ejs") %>
 
 </div>

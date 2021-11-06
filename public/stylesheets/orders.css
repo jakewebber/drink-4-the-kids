@@ -1,6 +1,11 @@
 body.orders{
 background: #222;    
 }
+
+input, textarea{
+  box-shadow: 0px 0px 10px 1px rgb(0,0,0);
+}
+
 #db-footer{
     display: none;
   }
@@ -12,16 +17,20 @@ background: #222;
 }
   
   .waiting-color{
-    color: #555 !important;
+    color: #555;
   }
   
   .finished-color{
-    color: green !important;
+    color: green;
   }
   
   .current-order {
-    background-color: rgb(148, 194, 148) !important;
+    background-color: rgb(45, 94, 43) !important;
     font-weight: bold;
+    color: #ddd;
+  }
+  .current-order .waiting-color{
+    color: #ddd;
   }
 
   .main-row{
@@ -49,23 +58,17 @@ background: #222;
       font-size: 12px;
   }
 
-  .fixed-header{
+  .db-header{
     color: #eee;
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0;
       background: #222;
-      padding-top: 10px;
-      padding-bottom: 10px;
       z-index: 2;
   }
 
-  .fixed-header div{
+  .db-header div{
       border-right: 1px solid #666;
   }
 
-  .fixed-header div:last-child{
+  .db-header div:last-child{
     border-right: 0;
 }
 
@@ -85,3 +88,4 @@ background: #222;
 label{
   color: white;
 }
+

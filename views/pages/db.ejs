@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 <script>
-let urlParams = new URLSearchParams(window.location.search);
-let currentId = urlParams.get('id');
+let orderElemId = window.location.hash
 
 window.onload = function() {
-      if(currentId){
+      if(orderElemId){
         // highlight and navigate to the order
-        document.getElementById('order-id-' + currentId).classList.add('current-order');
+        document.getElementById(orderElemId.substring(1)).classList.add('current-order');
+        location.href = orderElemId;
         // show the payment footer after an order
         document.getElementById('db-footer').classList.add('d-inline-block');
       }
@@ -27,22 +27,22 @@ window.onload = function() {
 
 <%
 const statusClass = {
-    waiting: "fas fa-hourglass-half waiting-color",
+    waiting: "far fa-clock waiting-color",
     inprogress: "far fa-hand-point-left",
     complete: "far fa-check-square finished-color"
 };
 %>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
 <div class="order-grid">
-  <div class="row fixed-header">
+  <div class="row db-header">
         <div class="col-5" data-field="" data-sortable="true">Name</div>
         <div class="col-5" data-field="" data-sortable="true">Order</div>
         <div class="col-3 d-none" data-field="" data-sortable="true">Date</div>
   </div>
     <% var count = 0; %>
-    <% results.forEach((order)=>{  %>
-  <div id="order-id-<%=order.id%>" class="row main-row pt-2" data-index="<%= count %>">
+    <% results.forEach((order, i)=>{  %>
+  <div id="order-<%=order.id%>" class="row main-row pt-2" data-index="<%= count %>">
     <div class="order-cell col-5"><%= order.name %></div>
     <div class="order-cell col-5"><%= order.drink_order %> </div>
     <div class="order-cell col-3 d-none">

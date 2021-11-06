@@ -31,21 +31,20 @@
 <form id="orderform" action="/send" method="POST">
   <fieldset>
     <div class="col-xs-6 col-xl-12">
+        <div class="mb-3">
+            <label for="drink-input" class="form-label">Drink Order</label>
+            <input id="drink-input" class="form-control form-control-lg" type="text" name="drink" maxlength="25" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good" required/>
+            <!-- <select id="drink-selector" class="form-select form-select-lg mb-3" placeholder="asdf" required>
+              <option disabled selected hidden>Pick a drink</option>
+            </select> -->
+        </div>
       <div class="mb-3">
-          <label for="name-input" class="form-label">Name</label>
-        <input id="name-input" class="form-control form-control-lg" type="text" maxlength="25" name="name" placeholder="buddy the elf" required/>
+          <label for="name-input" class="form-label">Your Name</label>
+        <input id="name-input" class="form-control form-control-lg" type="text" maxlength="25" name="name" oninvalid="this.setCustomValidity('We\'ll need your name')" placeholder="buddy the elf" required/>
       </div>
 
       <div class="mb-3">
-          <label for="drink-selector" class="form-label">Drink Order</label>
-          <input id="drink-input" class="form-control form-control-lg" type="text" maxlength="10" name="make it good" placeholder="make it good" required/>
-          <!-- <select id="drink-selector" class="form-select form-select-lg mb-3" placeholder="asdf" required>
-            <option disabled selected hidden>Pick a drink</option>
-          </select> -->
-      </div>
-
-      <div class="mb-3">
-        <label for="comment-input">Comments</label>
+        <label for="comment-input" class="form-label">Comments</label>
 
         <textarea  id="comment-input" class="form-control" id="exampleFormControlTextarea1" name="comments" placeholder="love letters only" rows="3"></textarea>
       </div>
@@ -55,12 +54,10 @@
     </div>
   </fieldset>
 </form>
-
+<img class="buddy-the-elf"  src="/images/buddytheelf.png">
 </div>
 
-
 <%- include ("../partials/footer.ejs") %>
-
 
 <div id="location-error-modal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
