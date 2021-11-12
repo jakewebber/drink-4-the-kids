@@ -4,69 +4,80 @@
         "name": "100% That Grinch",
         "ingredients": ["gin", "basil", "lemon"],
         "description": "Just took a DNA test turns out it’s 30% alcohol",
-        "imageUrl": "/images/drinks/ginbasilsmash.jpg"
+        "imageUrl": "/images/drinks/ginbasilsmash.jpg",
+        "price": "15"
     },
     {
         "id": 2,
         "name": "Whiskey Blitzen",
         "ingredients": ["bourbon", "egg white", "maple", "lemon"],
         "description": "A crowd favorite. Reindeer Fuel baby",
-        "imageUrl": "/images/drinks/whiskeysour.jpg"
+        "imageUrl": "/images/drinks/whiskeysour.jpg",
+        "price": "15"
+       
     },
     {
         "id": 3,
         "name": "MISTLETOE MARGARITA",
         "ingredients": ["tequila", "cointreau", "lime", "agave", "jalapeno/berry/mezcal optional"],
         "description": "We don’t care if it’s out of season. Get it strawberry, smokey, spicy, or classic.",
-        "imageUrl": "/images/margarita.jpg"
+        "imageUrl": "/images/margarita.jpg",
+        "price": "15"
     },
     {
         "id": 4,
         "name": "Santa's Old Fashioned",
         "ingredients": ["Bourbon", "all-spice dram", "angostura", "orange zest", "Luxardo cherry"],
         "description": "Cookies are just St Nick's other vice",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/oldfashioned.jpg",
+        "price": "15"
     },
     {
         "id": 4,
         "name": "Ms Claus's Medicine",
         "ingredients": ["mezcal", "yellow chartreuse", "aperol", "lime", "rosemary"],
         "description": "It’s good and strong. Doctor’s orders",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/nakedandfamous.jpg",
+        "price": "15"
     },
     {
         "id": 5,
         "name": "Little Rummer Boy",
         "ingredients": ["jamacian rum", "pineapple", "orange", "coconut", "nutmeg"],
         "description": "Not so little. Pa rum pum pum pum",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/painkiller.jpg",
+        "price": "15"
     },
     {
         "id": 6,
         "name": "Gin-ger Snap",
         "ingredients": ["Gin", "Ginger", "Aperol", "lemon"],
         "description": "Lots of gin, lots of ginger, lots of snap",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/maverick.jpg",
+        "price": "15"
     },
     {
         "id": 7,
         "name": "YippieKaYayMotherfu-",
         "ingredients": ["Vodka", "Averna Amaro", "Espresso"],
         "description": "For those late nights slamming presents down chimneys",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/espresso.jpg",
+        "price": "15"
     },
     {
         "id": 8,
         "name": "Mulled Cider",
         "ingredients": ["Rum or Whiskey", "Mulled Cider", "Winter Spices"],
         "description": "Have it hot or cold",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/mulled.jpg",
+        "price": "15"
     },
     {
         "id": 9,
         "name": "Eggnog",
         "ingredients": ["Homemade eggnog", "bourbon", "rum", "vanilla", "nutmeg"],
         "description": "It’s eggsquisite. Get it while it lasts",
-        "imageUrl": "/images/buddy.jpg"
+        "imageUrl": "/images/drinks/eggnog.jpg",
+        "price": "15"
     }
 ]

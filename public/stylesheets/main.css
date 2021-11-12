@@ -49,6 +49,7 @@ body{
 .light-bg{
   border-radius: 10px;
   background-color: #ddd;
+  color: #333;
 }
 h1{
   font-family: 'Pacifico', cursive;
@@ -95,11 +96,35 @@ h2{
   font-size: 1.5em;
 }
 
-p{
+h3{
+  font-family: 'Lobster', cursive;
+}
+
+h4{
+  font-family: 'Lobster', cursive;
+}
+
+.about{
   white-space: pre-wrap;
   color: #333;
 }
 
 .main-row::nth-of-type(1){
   margin-top: 50px;
+}
+
+.success-link{
+  color: rgb(40, 170, 79) !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+::placeholder {
+  color: #888 !important;
+  font-size: .8em;
+  font-style: italic;
+}
+
+a:visited{
+  color: white !important;
 }

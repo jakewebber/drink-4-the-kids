@@ -124,6 +124,8 @@
   .outer-menu .hamburger > div:after {
     top: 10px;
   }
+
+  
   .outer-menu .menu {
     position: fixed;
     top: 0;

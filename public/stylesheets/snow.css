@@ -4,15 +4,11 @@
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBjMWQzOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMzE1OCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-image: url('/images/buddy.png');
   background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0c1d38), color-stop(100%, #1a3158));
-  background-image: -moz-linear-gradient(#0c1d38, #1a3158);
-  background-image: -webkit-linear-gradient(#0c1d38, #1a3158);
-  background-image: linear-gradient(#0c1d38, #1a3158);
   position: relative;
-  width: 182px;
-  height: 182px;
+  width: 250px;
+  height: 250px;
   margin: 20px auto;
   overflow: hidden;
   /* iOS hack for border radius bleed with transforms */
@@ -35,10 +31,10 @@
   border-radius: 50%;
   content: " ";
   position: absolute;
-  width: 130px;
+  width: 250px;
   height: 100px;
   top: 10px;
-  right: -60px;
+  right: -160px;
   background: white;
 }
 #christmas .ground:after {
@@ -411,7 +407,7 @@
   -ms-animation-duration: 34s;
   -o-animation-duration: 34s;
   animation-duration: 34s;
-  left: 145px;
+  left: 185px;
   margin-top: 49px;
 }
 #christmas .flake.f-29 {
@@ -420,7 +416,7 @@
   -ms-animation-duration: 29s;
   -o-animation-duration: 29s;
   animation-duration: 29s;
-  left: 148px;
+  left: 200px;
   margin-top: 42px;
 }
 #christmas .flake.f-30 {
@@ -429,7 +425,7 @@
   -ms-animation-duration: 23s;
   -o-animation-duration: 23s;
   animation-duration: 23s;
-  left: 157px;
+  left: 210;
   margin-top: 70px;
 }
 #christmas .flake.f-31 {
@@ -438,7 +434,7 @@
   -ms-animation-duration: 18s;
   -o-animation-duration: 18s;
   animation-duration: 18s;
-  left: 165px;
+  left: 220px;
   margin-top: 78px;
 }
 

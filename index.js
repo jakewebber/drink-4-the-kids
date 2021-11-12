@@ -22,6 +22,7 @@ express()
   .get('/', (req, res) => res.render('pages/about'))
   .get('/menu', (req, res) => res.render('pages/menu'))
   .get('/order', (req, res) => res.render('pages/order'))
+  .get('/charity', (req, res) => res.render('pages/charity'))
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
