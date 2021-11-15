@@ -244,3 +244,9 @@
   .fs-6{
     font-size: 1.1rem!important;
   }
+
+  .drink-bg{
+    border-radius: 10px;
+    background-color: #ddd;
+    color: #333;
+  }

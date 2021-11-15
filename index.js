@@ -27,7 +27,7 @@ express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM drink_orders ORDER BY date DESC');
+      const result = await client.query('SELECT * FROM drink_orders WHERE status != \'complete\' ORDER BY date DESC');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();

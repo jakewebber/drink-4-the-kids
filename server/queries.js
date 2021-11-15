@@ -8,10 +8,10 @@ const pool = new Pool({
   });
 
 const getOrders = (request, response) => {
-    pool.query('SELECT * FROM drink_orders ORDER BY date', (error, result) => {
+    pool.query('SELECT * FROM drink_orders WHERE status != \'complete\' ORDER BY date', (error) => {
         if (error) {
             console.error(error);
-            throw error
+            res.send("Error " + err)
         }
         response.status(200).json(result.rows)
         const results = { 'results': (result) ? result.rows : null};

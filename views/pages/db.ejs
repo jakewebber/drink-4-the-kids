@@ -4,10 +4,16 @@
 let orderElemId = window.location.hash
 
 window.onload = function() {
-      if(orderElemId){
+      if(orderElemId){ // user is checking a specific order
         // highlight and navigate to the order
-        document.getElementById(orderElemId.substring(1)).classList.add('current-order');
-        location.href = orderElemId;
+        var orderElem = document.getElementById(orderElemId.substring(1));
+        if(orderElem != null){
+            orderElem.classList.add('current-order');
+            window.location = orderElemId;
+        }else {
+          new bootstrap.Modal(document.getElementById('ready-modal')).show();
+        }
+
         // show the payment footer after an order
         document.getElementById('db-footer').classList.add('d-inline-block');
       }
@@ -62,11 +68,31 @@ const statusClass = {
   </div>
     <% }) %>
 </div>
-
-
 <div id="db-footer">
 <%- include ("../partials/footer.ejs") %>
 </div>
 
+
+<div id="ready-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="green text-bungee text-center">YOUR XMAS SPIRIT IS READY</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="fs-3">SLIDE OVER TO THE BAR</p>
+              <img class="m-auto" width="180" height="160" src="images/buddy.png" alt="buddy">
+              <a class="xmas-button green" href="/menu">Get another present</a></p>
+              More donation options are available
+        </div>
+        <div class="modal-footer justify-content-center">
+            <a class="payment-icon paypal" href="https://paypal.me/jacobwwebber"></a>
+            <a class="payment-icon cashapp" href="https://cash.app/$wakejebber"></a>
+            <a class="payment-icon venmo" href="https://venmo.com/jacobwebber?txn=pay&note=drink4dakids"></a>        
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

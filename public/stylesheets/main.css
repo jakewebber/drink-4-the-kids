@@ -52,7 +52,6 @@ body{
   color: #333;
   border: 3px solid green;
   white-space: pre-wrap;
-
 }
 h1{
   font-family: 'Pacifico', cursive;
@@ -147,7 +146,7 @@ h3{
 }
 
 .text-highlight{
-  color: rgb(71, 197, 109);
+  color: rgb(27 185 92);
 }
 
 .text-bungee{
@@ -160,4 +159,8 @@ h3{
 }
 .text-ultra{
   font-family: 'Ultra', serif;
+}
+
+.btn-success:visited{
+  color: white;
 }
