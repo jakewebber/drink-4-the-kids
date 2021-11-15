@@ -1,6 +1,10 @@
-a.xmas-button:visited{
+a.xmas-button:visited, 
+a.xmas-button:hover,
+a.xmas-button:active, 
+a.xmas-button:focus, 
+a.xmas-button:target {
 	color: white !important;
-  }
+}
 
 .xmas-button {
 	display: inline-block;
