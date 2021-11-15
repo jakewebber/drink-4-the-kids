@@ -5,12 +5,11 @@ let orderElemId = window.location.hash
 
 window.onload = function() {
       if(orderElemId){ // user is checking a specific order
-        // highlight and navigate to the order
         var orderElem = document.getElementById(orderElemId.substring(1));
-        if(orderElem != null){
+        if(orderElem != null){ // if visible, highlight and navigate to the order
             orderElem.classList.add('current-order');
             window.location = orderElemId;
-        }else {
+        }else { // if not visible, drink is completed - display ready modal
           new bootstrap.Modal(document.getElementById('ready-modal')).show();
         }
 
