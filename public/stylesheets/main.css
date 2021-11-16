@@ -3,8 +3,6 @@ body{
   background-position: top;
   color: #eee;
 }
-.jumbotron {
-  padding-bottom: 20px; }
 
   .navbar + .jumbotron {
     margin-top: -20px; }
@@ -150,7 +148,7 @@ h3{
 }
 
 .text-bungee{
-  font-family: 'Bungee', cursive;
+  font-family: 'Bungee', cursive !important;
 }
 
 .text-cursive{

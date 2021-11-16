@@ -18,9 +18,9 @@
     },
     {
         "id": 3,
-        "name": "MISTLETOE MARGARITA",
+        "name": "Feliz Navidad",
         "ingredients": ["tequila", "cointreau", "lime", "agave", "jalapeno/berry/mezcal optional"],
-        "description": "We don’t care if it’s out of season. Get it strawberry, smokey, spicy, or classic.",
+        "description": "Never out of season. Get it strawberry, smokey, spicy, or classic.",
         "imageUrl": "/images/margarita.jpg",
         "price": "15"
     },
@@ -28,13 +28,13 @@
         "id": 4,
         "name": "Santa's Old Fashioned",
         "ingredients": ["Bourbon", "all-spice dram", "angostura", "orange zest", "Luxardo cherry"],
-        "description": "Cookies are just St Nick's other vice",
+        "description": "Cookies are just his other vice",
         "imageUrl": "/images/drinks/oldfashioned.jpg",
         "price": "15"
     },
     {
         "id": 4,
-        "name": "Ms Claus's Medicine",
+        "name": "Miss Claus's Medicine",
         "ingredients": ["mezcal", "yellow chartreuse", "aperol", "lime", "rosemary"],
         "description": "It’s good and strong. Doctor’s orders",
         "imageUrl": "/images/drinks/nakedandfamous.jpg",
@@ -60,7 +60,7 @@
         "id": 7,
         "name": "YippieKaYayMotherfu-",
         "ingredients": ["Vodka", "Averna Amaro", "Espresso"],
-        "description": "For those late nights slamming presents down chimneys",
+        "description": "For those late nights slamming presents down chimneys. Welcome to the party, pal",
         "imageUrl": "/images/drinks/espresso.jpg",
         "price": "15"
     },
@@ -68,7 +68,7 @@
         "id": 8,
         "name": "Mulled Cider",
         "ingredients": ["Rum or Whiskey", "Mulled Cider", "Winter Spices"],
-        "description": "Have it hot or cold",
+        "description": "Hot or cold, yes or no, in or out",
         "imageUrl": "/images/drinks/mulled.jpg",
         "price": "15"
     },
