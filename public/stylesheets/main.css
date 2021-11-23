@@ -4,6 +4,10 @@ body{
   color: #eee;
 }
 
+.admin{
+  background: #ccc;
+}
+
   .navbar + .jumbotron {
     margin-top: -20px; }
 
@@ -162,3 +166,4 @@ h3{
 .btn-success:visited{
   color: white;
 }
+

@@ -30,13 +30,13 @@ window.onload = function() {
 
 <%- include ("../partials/nav.ejs") %>
 
-<%
+<!-- <%
 const statusClass = {
     waiting: "far fa-clock waiting-color",
     inprogress: "far fa-hand-point-left",
     complete: "far fa-check-square finished-color"
 };
-%>
+%> -->
 
 <div class="container-fluid">
     <div class="fs-4 text-center">Drink orders show here. Refresh to check your spot in the queue.</div>
@@ -62,7 +62,7 @@ const statusClass = {
         ).format(order.date) %>
       </div>
       </div>
-    <div class="col-2 px-4"><i class="status-icon fa <%=statusClass[order.status] %>"></i></div>
+    <!-- <div class="col-2 px-4"><i class="status-icon fa <%=statusClass[order.status] %>"></i></div> -->
     <span class="col-12 comment"><i class="far fa-comment-dots px-2"></i><%= order.comments %></span>
   </div>
     <% }) %>

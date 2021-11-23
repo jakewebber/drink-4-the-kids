@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<body class="admin">
+
+<%- include ("../partials/nav.ejs") %>
+
+<%
+const statusClass = {
+    waiting: "far fa-clock waiting-color",
+    inprogress: "far fa-hand-point-left",
+    complete: "far fa-check-square finished-color"
+};
+%>
+
+<div class="container-fluid">
+    <div class="fs-4 text-center text-dark">Drink orders show here. Refresh to check your spot in the queue.</div>
+
+    <table class="table table-striped table-bordered table-dark" data-toggle="table" data-flat="true" data-search="true" >
+      <thead class="thead-dark">
+        <tr>
+            <th data-field="" data-sortable="true">Name</th>
+            <th data-field="" data-sortable="true">Order</th>
+            <th data-field="" data-sortable="true">Date</th>
+            <th data-field="" data-sortable="true">Paid</th>
+            <th data-field="" data-sortable="true">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% var count = 0; %>
+        <% results.forEach((order)=>{  %>
+            <tr id="order-id-<%=order.id%>" data-index="<%= count %>">
+                <td><%= order.name %></td>
+                <td><%= order.drink_order %> </td>
+                <td><%= new Date(new Date(order.date).setHours(new Date(order.date).getHours() + 7)).toLocaleString() %></td>
+                <td>
+                  <form id="paid-<%=order.id%>" method="POST" action="/updatePaid" target="dummyframe">
+                    <input type="checkbox" name="paidStatus" onchange="document.getElementById('paid-<%=order.id%>').submit()"  <%- order.is_paid ? 'checked' : '' %> data-on="yes" data-offstyle="danger" data-off="no" data-toggle="toggle">
+                    <input type="hidden" name="orderId" value = "<%=order.id%>" />
+                  </form>
+                </td>
+                <td>
+                  <form id="done-<%=order.id%>" method="POST" action="/updateDone" target="dummyframe">
+                    <input type="checkbox" name="doneStatus" onchange="document.getElementById('done-<%=order.id%>').submit()"  <%- order.is_done ? 'checked' : '' %> data-on="done" data-onstyle="success" data-offstyle="danger" data-off="waiting" data-toggle="toggle">
+                    <input type="hidden" name="orderId" value = "<%=order.id%>" />
+                  </form>
+                </td>
+              </tr>
+            <% if(order.comments){ %>
+            <tr>
+                <td colspan="5"><%= order.comments %> </td>
+            </tr>
+            <% } %>
+        <% }) %>
+      </tbody>
+    </table>
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+</body>
+</html>
+<script type="text/javascript">
+  // Select all checkboxes with the name 'settings' using querySelectorAll.
+  $('#paid-47').submit(function(e) {
+        e.preventDefault();    
+        var formData = new FormData(form[0]);
+
+        $.ajax({
+            url: form.attr("action"),
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              console.log('done')
+                alert(data)
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+      });
+
+   $('form').each((index, form) => {
+      form.submit(function(e) {
+        e.preventDefault();    
+        var formData = new FormData(form[0]);
+
+        $.ajax({
+            url: form.attr("action"),
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              console.log('done')
+                alert(data)
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+      });
+  });
+
+
+</script>

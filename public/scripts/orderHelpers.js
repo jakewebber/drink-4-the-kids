@@ -9,8 +9,8 @@ function areValidCoordinates(validLat, validLong, userLat, userLong){
   }
 
 function locationSuccess(pos) {
-    if(areValidCoordinates(34.1493571, -84.0878155, pos.coords.latitude, pos.coords.longitude) 
-    //|| areValidCoordinates(33.734581, -84.365883, pos.coords.latitude, pos.coords.longitude)
+    if( areValidCoordinates(34.1493571, -84.0878155, pos.coords.latitude, pos.coords.longitude) ||
+     areValidCoordinates(33.734581, -84.365883, pos.coords.latitude, pos.coords.longitude)
     ){
         var form = $('#orderform');
         if(form[0].checkValidity()){
@@ -29,9 +29,9 @@ function locationError(pos) {
 
 verifyOrder = function(){
     var today = new Date();
-    if(today.getDay() !== 18 || today.getMonth() !== 12){
-        new bootstrap.Modal(document.getElementById('date-error-modal')).show();
-    }else
+    // if(today.getDay() !== 18 || today.getMonth() !== 12){
+    //     new bootstrap.Modal(document.getElementById('date-error-modal')).show();
+    // }else
     if (navigator.geolocation) {
         var options = {
         enableHighAccuracy: true,

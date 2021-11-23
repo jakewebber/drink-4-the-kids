@@ -27,7 +27,7 @@ express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM drink_orders WHERE status != \'complete\' ORDER BY date DESC');
+      const result = await client.query('SELECT * FROM drink_orders WHERE is_done != true ORDER BY date DESC');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
@@ -41,4 +41,7 @@ express()
     console.log(req);
     console.log(db);
   })
+  .post('/updatePaid', (req, res) => db.updatePaid(req, res))
+  .post('/updateDone', (req, res) => db.updateDone(req, res))
+  .get('/admin', (req, res) => db.getOrdersAdmin(req, res))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
