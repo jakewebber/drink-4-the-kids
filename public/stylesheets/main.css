@@ -63,7 +63,7 @@ h1{
   text-align: center;
 }
 .title{
-  color: rgb(27, 158, 77);
+  color: rgb(27, 158, 77) !important;
 }
 .payment-icon{
   background-size: 47px 47px;

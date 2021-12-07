@@ -3,7 +3,7 @@
         "id": 1,
         "name": "100% That Grinch",
         "ingredients": ["gin", "basil", "lemon"],
-        "description": "Just took a DNA test turns out it’s 30% alcohol",
+        "description": "Just took a DNA test, turns out it’s mostly alcohol",
         "imageUrl": "/images/drinks/ginbasilsmash.jpg",
         "price": "15"
     },
@@ -17,18 +17,26 @@
        
     },
     {
+        "id": 10,
+        "name": "Prossec-ohoho",
+        "ingredients": ["Elderflower", "Prosecco", "Vodka", "bubbles"],
+        "description": "You're on a beach. Santa shows up in a speedo with two of these. It's not even noon. Life is good.",
+        "imageUrl": "/images/drinks/spritz.jpg",
+        "price": "15"
+    },
+    {
         "id": 3,
         "name": "Feliz Navidad",
         "ingredients": ["tequila", "cointreau", "lime", "agave", "jalapeno/berry/mezcal optional"],
         "description": "Never out of season. Get it strawberry, smokey, spicy, or classic.",
-        "imageUrl": "/images/margarita.jpg",
+        "imageUrl": "/images/drinks/margarita.jpg",
         "price": "15"
     },
     {
         "id": 4,
-        "name": "Santa's Old Fashioned",
+        "name": "Santa's Little Helper",
         "ingredients": ["Bourbon", "all-spice dram", "angostura", "orange zest", "Luxardo cherry"],
-        "description": "Cookies are just his other vice",
+        "description": "Saint Nick's take on an old fashioned. Cookies are just his other vice",
         "imageUrl": "/images/drinks/oldfashioned.jpg",
         "price": "15"
     },
@@ -43,8 +51,8 @@
     {
         "id": 5,
         "name": "Little Rummer Boy",
-        "ingredients": ["jamacian rum", "pineapple", "orange", "coconut", "nutmeg"],
-        "description": "Not so little. Pa rum pum pum pum",
+        "ingredients": ["jamacian rum", "branca menta", "pineapple", "orange", "coconut", "nutmeg"],
+        "description": "A tropical breathmint. Not so little. Pa rum pum pum pum",
         "imageUrl": "/images/drinks/painkiller.jpg",
         "price": "15"
     },
@@ -58,7 +66,7 @@
     },
     {
         "id": 7,
-        "name": "YippieKaYayMotherfu-",
+        "name": "Rudolph the Red-Eye Reindeer",
         "ingredients": ["Vodka", "Averna Amaro", "Espresso"],
         "description": "For those late nights slamming presents down chimneys. Welcome to the party, pal",
         "imageUrl": "/images/drinks/espresso.jpg",
@@ -76,8 +84,16 @@
         "id": 9,
         "name": "Eggnog",
         "ingredients": ["Homemade eggnog", "bourbon", "rum", "vanilla", "nutmeg"],
-        "description": "It’s eggsquisite. Get it while it lasts",
+        "description": "It’s eggsquisite. Use your noggin and get it while it lasts",
         "imageUrl": "/images/drinks/eggnog.jpg",
+        "price": "15"
+    },
+    {
+        "id": 11,
+        "name": "Drift Cocktails",
+        "ingredients": [],
+        "description": "Made with organic spirits and carbonated mineral water. Sip back and relax. with one of four flavors - blood orange, meyer lemon, passion fruit, lime",
+        "imageUrl": "/images/drinks/drift.png",
         "price": "15"
     }
 ]
