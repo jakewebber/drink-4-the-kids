@@ -21,7 +21,6 @@ const getOrders = (request, response) => {
 
 const createOrder = (request, response) => {
     let text = 'INSERT INTO drink_orders(name, drink_order, date, comments, is_paid, is_done) VALUES ($1, $2, NOW(), $3, false, false) RETURNING id';
-    
     // pool.query(text, [request.body.name, request.body.drink, request.body.comments], (error, result) => {
     //   if (error) {
     //     console.log('error')
