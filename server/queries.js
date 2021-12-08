@@ -22,15 +22,15 @@ const getOrders = (request, response) => {
 const createOrder = (request, response) => {
     let text = 'INSERT INTO drink_orders(name, drink_order, date, comments, is_paid, is_done) VALUES ($1, $2, NOW(), $3, false, false) RETURNING id';
     
-    pool.query(text, [request.body.name, request.body.drink, request.body.comments], (error, result) => {
-      if (error) {
-        console.log('error')
-        throw error;
-      }
-      var id = result.rows[0].id;
-      var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
-      response.redirect(url);
-    })
+    // pool.query(text, [request.body.name, request.body.drink, request.body.comments], (error, result) => {
+    //   if (error) {
+    //     console.log('error')
+    //     throw error;
+    //   }
+    //   var id = result.rows[0].id;
+    //   var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
+    //   response.redirect(url);
+    // })
   }
 
 const updatePaid = (request, response) => {
