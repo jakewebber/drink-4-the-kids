@@ -10,16 +10,31 @@
     {
         "id": 2,
         "name": "Whiskey Blitzen",
-        "ingredients": ["bourbon", "egg white", "maple", "lemon"],
-        "description": "A crowd favorite. Reindeer Fuel baby",
+        "ingredients": ["bourbon", "egg white", "maple", "lemon", "angostura"],
+        "description": "A crowd favorite. <br> Reindeer Fuel baby",
         "imageUrl": "/images/drinks/whiskeysour.jpg",
         "price": "15"
-       
+    },
+    {
+        "id": 12,
+        "name": "Winter Soldier",
+        "ingredients": ["overproof rye whiskey", "falernum", "pineapple", "lemon", "angostura"],
+        "description": "Our super-soldier serum. Bucky? Is that you?",
+        "imageUrl": "/images/drinks/wintersoldier.jpg",
+        "price": "15"
+    },
+    {
+        "id": 13,
+        "name": "Lychee Lou Who",
+        "ingredients": ["Vodka", "Lychee", "Coconut", "Lime", "Sumac"],
+        "description": "In Whoville they say this grew the Grinch's heart three sizes that day",
+        "imageUrl": "/images/drinks/lychee.jpg",
+        "price": "15"
     },
     {
         "id": 10,
-        "name": "Prossec-ohoho",
-        "ingredients": ["Elderflower", "Prosecco", "Vodka", "bubbles"],
+        "name": "Prosseco-ho-ho",
+        "ingredients": ["Elderflower", "Prosecco", "Thyme & Butterfly tea infused vodka", "bubbles"],
         "description": "You're on a beach. Santa shows up in a speedo with two of these. It's not even noon. Life is good.",
         "imageUrl": "/images/drinks/spritz.jpg",
         "price": "15"
@@ -28,7 +43,7 @@
         "id": 3,
         "name": "Feliz Navidad",
         "ingredients": ["tequila", "cointreau", "lime", "agave", "jalapeno/berry/mezcal optional"],
-        "description": "Never out of season. Get it strawberry, smokey, spicy, or classic.",
+        "description": "Top shelf margaritas are never out of season. Get it berry, smokey, spicy, or classic.",
         "imageUrl": "/images/drinks/margarita.jpg",
         "price": "15"
     },
@@ -66,34 +81,10 @@
     },
     {
         "id": 7,
-        "name": "Rudolph the Red-Eye Reindeer",
+        "name": "YIPPyKIYAY-MUTHERFU",
         "ingredients": ["Vodka", "Averna Amaro", "Espresso"],
-        "description": "For those late nights slamming presents down chimneys. Welcome to the party, pal",
+        "description": "For those late nights sliding down chimneys.<br>Welcome to the party, pal",
         "imageUrl": "/images/drinks/espresso.jpg",
-        "price": "15"
-    },
-    {
-        "id": 8,
-        "name": "Mulled Cider",
-        "ingredients": ["Rum or Whiskey", "Mulled Cider", "Winter Spices"],
-        "description": "Hot or cold, yes or no, in or out",
-        "imageUrl": "/images/drinks/mulled.jpg",
-        "price": "15"
-    },
-    {
-        "id": 9,
-        "name": "Eggnog",
-        "ingredients": ["Homemade eggnog", "bourbon", "rum", "vanilla", "nutmeg"],
-        "description": "It’s eggsquisite. Use your noggin and get it while it lasts",
-        "imageUrl": "/images/drinks/eggnog.jpg",
-        "price": "15"
-    },
-    {
-        "id": 11,
-        "name": "Drift Cocktails",
-        "ingredients": [],
-        "description": "Made with organic spirits and carbonated mineral water. Sip back and relax. with one of four flavors - blood orange, meyer lemon, passion fruit, lime",
-        "imageUrl": "/images/drinks/drift.png",
         "price": "15"
     }
 ]

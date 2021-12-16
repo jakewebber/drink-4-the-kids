@@ -6,10 +6,11 @@
   <%- include ("../partials/header.ejs") %>
   <script type="text/javascript">
     $(document).ready(function () {
+      // cocktails
       $.getJSON("/assets/drinks.json", function (result) {
           result.forEach((drink, i) => {
             var formattedIngredients =
-              $("#menu-list").append(`
+              $("#cocktail-list").append(`
               <div class="row drink-bg my-2 py-2">
                 <div class="col-5">
                   <img class="drink-img" src="${drink.imageUrl}" width="125" height="150"></img>
@@ -25,6 +26,45 @@
               );
           });
       });
+      // shots
+      $.getJSON("/assets/shots.json", function (result) {
+          result.forEach((drink, i) => {
+            var formattedIngredients =
+              $("#shot-list").append(`
+              <div class="row drink-bg my-2 py-2">
+                <div class="col-5">
+                  <img class="drink-img" src="${drink.imageUrl}" width="125" height="150"></img>
+                  </div>
+                <div class="col-7">
+                <div class="drink-title font-monospace">${drink.name}</div>
+                <div class="drink-description fst-italic"> ${drink.description} </div>
+                <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
+                </div>
+              </div>
+              `
+              );
+          });
+      });
+
+      // other
+      $.getJSON("/assets/other.json", function (result) {
+          result.forEach((drink, i) => {
+            var formattedIngredients =
+              $("#other-list").append(`
+              <div class="row drink-bg my-2 py-2">
+                <div class="col-5">
+                  <img class="drink-img" src="${drink.imageUrl}" width="125" height="150"></img>
+                  </div>
+                <div class="col-7">
+                <div class="drink-title font-monospace">${drink.name}</div>
+                <div class="drink-description fst-italic"> ${drink.description} </div>
+                <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
+                </div>
+              </div>
+              `
+              );
+          });
+      });
     });
   </script>
 </head>
@@ -32,19 +72,29 @@
 <body>
 
   <%- include ("../partials/nav.ejs") %>
+<div class="drink-nav">
+  <a href="#top-nav">Cocktails </a>
+  <a href="#other-nav">Batched</a>
+  <a href="#shot-nav">Shots</a>
+</div>
 
-  <div class="container pt-4">
-      <h1 class="title">Cocktails</h1>
+  <div class="container pt-4" id="top-nav">
 
-      <div class="mx-1">
+    <div class="mx-1">
+        <br><br>
         <h3 class="text-center">work in progress</h3>
 <h2 class="text-center">Want something different?<br>Ask what we can whip up for you</h2>
-        <div id="menu-list"></div>
-        </div>
-      </div>
+<h1 class="title">Cocktails</h1>
+        <div id="cocktail-list"></div>
+        <br id="other-nav"><br>
+        <h1 class="title">Batched & Boozy</h1>
+        <div id="other-list"></div>
+        <br id="shot-nav"><br>
+        <h1 class="title">Shots 4 Tots</h1>
+        <div id="shot-list"></div>
+    </div>
   </div>
   <%- include ("../partials/xmaslights.ejs") %>
 
-</div>
 </body>
 </html>
