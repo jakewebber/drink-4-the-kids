@@ -28,10 +28,6 @@ function locationError(pos) {
 }
 
 verifyOrder = function(){
-    var today = new Date();
-    if(today.getDay() !== 18 || today.getMonth() !== 12){
-        new bootstrap.Modal(document.getElementById('date-error-modal')).show();
-    }else
     if (navigator.geolocation) {
         var options = {
         enableHighAccuracy: true,
