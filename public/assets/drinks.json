@@ -19,7 +19,7 @@
         "id": 12,
         "name": "Winter Soldier",
         "ingredients": ["overproof rye whiskey", "falernum", "pineapple", "lemon", "angostura"],
-        "description": "Our super-soldier serum. Bucky? Is that you?",
+        "description": "Whiskey gone tiki in our super-soldier serum. Bucky? Is that you?",
         "imageUrl": "/images/drinks/wintersoldier.jpg",
         "price": "11"
     },
@@ -33,7 +33,7 @@
     },
     {
         "id": 10,
-        "name": "Prosseco-ho-ho",
+        "name": "Prosecco-ho-ho",
         "ingredients": ["Elderflower", "Prosecco", "Thyme & Butterfly tea infused vodka", "bubbles"],
         "description": "You're on a beach. Santa shows up in a speedo with two of these. It's not even noon. Life is good.",
         "imageUrl": "/images/drinks/spritz.jpg",
@@ -59,7 +59,7 @@
         "id": 4,
         "name": "Miss Claus's Medicine",
         "ingredients": ["mezcal", "yellow chartreuse", "aperol", "lime", "rosemary"],
-        "description": "It’s good and strong. Doctor’s orders",
+        "description": "It’s unique, good, and strong. Drink up, doctor’s orders",
         "imageUrl": "/images/drinks/nakedandfamous.jpg",
         "price": "12"
     },
@@ -75,7 +75,7 @@
         "id": 6,
         "name": "Gin-ger Snap",
         "ingredients": ["Gin", "Ginger", "Aperol", "lemon"],
-        "description": "Lots of gin, lots of ginger, lots of snap",
+        "description": "Bend and snap, baby.<br>Lots of gin, lots of ginger, lots of snap",
         "imageUrl": "/images/drinks/maverick.jpg",
         "price": "10"
     },
