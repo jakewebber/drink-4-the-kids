@@ -2,10 +2,10 @@
     {
         "id": 101,
         "name": "nice shot",
-        "ingredients": ["midori", "tequila"],
+        "ingredients": ["peppermint schnapps", "butterfly tea-infused vodka"],
         "description": "One for the angels and role-model citizens.",
         "imageUrl": "/images/drinks/nice.jpg",
-        "price": "4"
+        "price": "3"
     },
     {
         "id": 100,
