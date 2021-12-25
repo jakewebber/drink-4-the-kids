@@ -230,6 +230,15 @@
     text-transform: capitalize;
   }
 
+  .drink-price {
+	  font-size: 1.2em;
+	  font-weight: 800;
+	  padding-top: 5px;
+	  padding-right: 5px;
+	  color: #555;
+	  font-family: 'Sora', sans-serif;
+  }
+
   .buddy-the-elf{
     position:absolute;
     bottom: 0; 

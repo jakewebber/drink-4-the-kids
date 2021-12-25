@@ -19,7 +19,7 @@
                 <div class="drink-title font-monospace">${drink.name}</div>
                 <div class="drink-description fst-italic"> ${drink.description} </div>
                 <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
-                <a class="btn btn-success" href="/order?id=${drink.id}">ORDER</a>
+                <a class="btn btn-success" href="/order?id=${drink.id}">ORDER</a><span class="float-end drink-price"> ${ drink.price }</span>
                 </div>
               </div>
               `
@@ -39,6 +39,7 @@
                 <div class="drink-title font-monospace">${drink.name}</div>
                 <div class="drink-description fst-italic"> ${drink.description} </div>
                 <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
+				<span class="float-end drink-price"> ${ drink.price }</span>
                 </div>
               </div>
               `
@@ -59,6 +60,7 @@
                 <div class="drink-title font-monospace">${drink.name}</div>
                 <div class="drink-description fst-italic"> ${drink.description} </div>
                 <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
+				<span class="float-end drink-price"> ${ drink.price }</span>
                 </div>
               </div>
               `
