@@ -14,13 +14,5 @@
         "description": "A dairy-free take on Alton Brown's aged recipe. It's eggsquisite. Use your noggin and get it while it lasts",
         "imageUrl": "/images/drinks/eggnog.jpg",
         "price": "9"
-    },
-    {
-        "id": 11,
-        "name": "Drift Cocktails",
-        "ingredients": [],
-        "description": "Made with organic spirits and carbonated mineral water. Sip back and relax with meyer lemon or blood orange.",
-        "imageUrl": "/images/drinks/drift.jpg",
-        "price": "4"
     }
 ]

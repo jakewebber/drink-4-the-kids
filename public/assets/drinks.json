@@ -42,7 +42,7 @@
     {
         "id": 3,
         "name": "Feliz Navidad",
-        "ingredients": ["tequila", "cointreau", "lime", "agave", "jalapeno/berry/mezcal optional"],
+        "ingredients": ["tequila", "cointreau", "lime", "coconut", "jalapeno/berry/mezcal optional"],
         "description": "Top shelf margaritas are never out of season. Get it berry, smokey, spicy, or classic.",
         "imageUrl": "/images/drinks/margarita.jpg",
         "price": "12"
@@ -54,14 +54,6 @@
         "description": "Saint Nick's take on an old fashioned. Cookies are just his other vice",
         "imageUrl": "/images/drinks/oldfashioned.jpg",
         "price": "10"
-    },
-    {
-        "id": 4,
-        "name": "Miss Claus's Medicine",
-        "ingredients": ["mezcal", "yellow chartreuse", "aperol", "lime", "rosemary"],
-        "description": "It’s unique, good, and strong. Drink up, doctor’s orders",
-        "imageUrl": "/images/drinks/nakedandfamous.jpg",
-        "price": "12"
     },
     {
         "id": 5,
