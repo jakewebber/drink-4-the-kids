@@ -63,6 +63,16 @@ h1{
 }
 .title{
   color: rgb(27, 158, 77) !important;
+  font-size: 3.5em;
+}
+
+.date{
+  font-size: 2.5em;
+}
+
+.catchphrase {
+  font-size:1.5em;
+  padding-bottom: 10px;
 }
 .payment-icon{
   background-size: 47px 47px;
@@ -154,8 +164,7 @@ h3{
 }
 
 .text-cursive{
-  font-family: 'EB Garamond', serif;
-  font-style: italic;
+  font-family: 'Fugaz One', cursive;
 }
 .text-ultra{
   font-family: 'Ultra', serif;
