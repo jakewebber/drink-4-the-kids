@@ -28,14 +28,33 @@ function locationError(pos) {
 }
 
 verifyOrder = function(){
-    if (navigator.geolocation) {
-        var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-        };
-        var position = navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options);
-    } else {
-        alert("Geolocation is not supported by this browser.");
+    // saving name for repeat form submissions
+    var nameValue = document.getElementById('name-input').value;
+    localStorage.setItem('name', nameValue);
+
+    let form = $('#orderform');
+    let today = new Date(),
+     start = new Date('2022-12-17'),
+     end = new Date('2022-12-20');
+
+    if(!form[0].checkValidity()){
+        form[0].reportValidity();
     }
+    else if(today < start || today > end){ // verify party date
+        new bootstrap.Modal(document.getElementById('date-error-modal')).show();
+    }else{
+    form.submit();
+    }   
+        // if (navigator.geolocation) {
+    //     var options = {
+    //     enableHighAccuracy: true,
+    //     timeout: 5000,
+    //     maximumAge: 0
+    //     };
+    //     var position = navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options);
+    // } else {
+    //     alert("Geolocation is not supported by this browser.");
+    // }
+
+
 }

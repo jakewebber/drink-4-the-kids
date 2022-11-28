@@ -8,7 +8,7 @@ const pool = new Pool({
   });
 
 const getOrders = (request, response) => {
-    pool.query('SELECT * FROM drink_orders WHERE is_done != true ORDER BY date DESC', (error) => {
+    pool.query('SELECT * FROM drink_orders WHERE is_done != true ORDER BY date DESC', (error, result) => {
         if (error) {
             console.error(error);
             res.send("Error " + err)
@@ -26,6 +26,12 @@ const createOrder = (request, response) => {
         console.log('error')
         throw error;
       }
+      // field from form bots - do nothing
+      if(request.body.email){
+        return;
+      }
+
+      // append result ID to url for searching on order page
       var id = result.rows[0].id;
       var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
       response.redirect(url);

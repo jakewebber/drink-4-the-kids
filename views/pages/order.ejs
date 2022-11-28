@@ -8,16 +8,27 @@
 <script type="text/javascript">
   let selectedId = new URLSearchParams(window.location.search).get('id');
   var result;
-  if(selectedId){
-    $(document).ready(function () {
+
+  $(document).ready(function () {
+    if(selectedId){
       $.getJSON("/assets/drinks.json", function (result) {
           var drink = result.find(x=> x.id == selectedId);
           document.getElementById("drink-input").value = drink.name;
       });
-    });
-  }
+    }
 
-  
+    $.getJSON("/assets/drinks.json", function (result) {
+      var options = $("#drink-selector");
+      result.forEach((item) => {
+          options.append(new Option(item.name, item.id));
+      });
+    });
+
+    var savedName = localStorage.getItem('name');
+    if(savedName){
+      document.getElementById("name-input").value = savedName;
+    }
+  });
 </script>
 
 
@@ -33,14 +44,19 @@
     <div class="col-xs-6 col-xl-12">
         <div class="mb-3">
             <label for="drink-input" class="form-label">Drink Order</label>
-            <input id="drink-input" class="form-control form-control-lg" type="text" name="drink" maxlength="25" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good" required/>
-            <!-- <select id="drink-selector" class="form-select form-select-lg mb-3" placeholder="asdf" required>
-              <option disabled selected hidden>Pick a drink</option>
-            </select> -->
+            <!-- <input id="drink-input" class="form-control form-control-lg" type="text" name="drink" maxlength="25" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good" required/> -->
+            <select required id="drink-selector" class="form-select form-select-lg mb-3" placeholder="asdf" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good">
+              <option class="d-none" disabled selected value> Pick a Drink </option>
+            </select>
         </div>
       <div class="mb-3">
           <label for="name-input" class="form-label">Your Name</label>
         <input id="name-input" class="form-control form-control-lg" type="text" maxlength="25" name="name" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('We\'ll need your name, nutcracker')" placeholder="buddy the elf?" required/>
+      </div>
+      <!-- field for bots -->
+      <div class="mb-3 d-none">
+        <label for="email-input" class="form-label">Email</label>
+        <input id="email-input" class="form-control form-control-lg" type="text" maxlength="25" name="email" />
       </div>
 
       <div class="mb-3">
@@ -58,7 +74,7 @@
 
 <%- include ("../partials/footer.ejs") %>
 
-<div id="location-error-modal" class="modal" tabindex="-1">
+  <!-- <div id="location-error-modal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -67,16 +83,15 @@
         </div>
         <div class="modal-body text-center">
           <p>Looks like you're not at the party. 
-This isn't uber eats, so get over here.
-Reach out to us for the address
-Jake: 678-736-1277</p>
+  Reach out to us for the address
+  Jake: 678-736-1277</p>
         </div>
         <div class="modal-footer justify-content-center">
             <a class="xmas-button order-cell-small" href="sms:6787361277&body=drink4thekids%20Christmas%20party%20address%3F">Text Jake</a></p>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div id="date-error-modal" class="modal fade" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -86,7 +101,7 @@ Jake: 678-736-1277</p>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body text-center">
-            <p class="fs-3">IT ISN'T PARTY TIME YET <br><br><b class="fw-bold">Saturday, December 18th</b> <br> Mark your calendar</p>
+            <p class="fs-3">IT ISN'T PARTY TIME YET <br><br><b class="fw-bold">Saturday, December 17th</b> <br> Mark your calendar</p>
           </div>
           <img class="m-auto" width="180" height="160" src="images/buddy.png" alt="buddy">
           <div class="modal-footer justify-content-center">
