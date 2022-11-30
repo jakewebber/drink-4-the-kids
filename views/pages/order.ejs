@@ -5,30 +5,50 @@
     <head>
         <%- include ("../partials/header.ejs") %>
     </head>
+
 <script type="text/javascript">
   let selectedId = new URLSearchParams(window.location.search).get('id');
-  var result;
 
   $(document).ready(function () {
-    if(selectedId){
-      $.getJSON("/assets/drinks.json", function (result) {
-          var drink = result.find(x=> x.id == selectedId);
-          document.getElementById("drink-input").value = drink.name;
-      });
-    }
-
-    $.getJSON("/assets/drinks.json", function (result) {
-      var options = $("#drink-selector");
+    var options = $("#drink-selector");
+    $.getJSON("/assets/alldrinks.json", function (result) {
       result.forEach((item) => {
           options.append(new Option(item.name, item.id));
       });
+      options.append(new Option('Type a custom drink...', 'customDrink'));
     });
+
+    if(selectedId){
+      $.getJSON("/assets/alldrinks.json", function (result) {
+          var drink = result.find(x=> x.id == selectedId);
+          document.getElementById("drink-selector").value = drink.id;
+      });
+    }
 
     var savedName = localStorage.getItem('name');
     if(savedName){
       document.getElementById("name-input").value = savedName;
     }
   });
+
+
+  function setDrinkCost(drinkId){
+    var costField = $("#drink-cost");
+
+    if(!drinkId){
+      costField.value = 10;
+    }else{
+      $.getJSON("/assets/alldrinks.json", function (result) {
+          var drink = result.find(x=> x.id == drinkId);
+          if(drink){
+            drinkCost = parseInt(drink.price);
+            costField.val(drinkCost);
+          }
+      });
+    }
+
+  }
+
 </script>
 
 
@@ -42,17 +62,44 @@
 <form id="orderform" action="/send" method="POST">
   <fieldset>
     <div class="col-xs-6 col-xl-12">
-        <div class="mb-3">
-            <label for="drink-input" class="form-label">Drink Order</label>
-            <!-- <input id="drink-input" class="form-control form-control-lg" type="text" name="drink" maxlength="25" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good" required/> -->
-            <select required id="drink-selector" class="form-select form-select-lg mb-3" placeholder="asdf" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good">
-              <option class="d-none" disabled selected value> Pick a Drink </option>
-            </select>
-        </div>
       <div class="mb-3">
-          <label for="name-input" class="form-label">Your Name</label>
+        <label for="name-input" class="form-label">Your Name</label>
         <input id="name-input" class="form-control form-control-lg" type="text" maxlength="25" name="name" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('We\'ll need your name, nutcracker')" placeholder="buddy the elf?" required/>
       </div>
+      <div class="mb-3">
+          <label for="drink-selector" class="form-label">Drink Order</label>
+          <!-- <input id="drink-input" class="form-control form-control-lg" type="text" name="drink" maxlength="25" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good" required/> -->
+          <select
+          name="drink"
+          required id="drink-selector" class="form-select form-select-lg mb-3" required 
+            oninput="this.setCustomValidity('')" 
+            oninvalid="this.setCustomValidity('Not even a glass of milk?')"  
+            placeholder="make it good"
+            onchange="if(this.options[this.selectedIndex].value=='customDrink'){
+              toggleField(this,this.nextSibling);
+              this.selectedIndex='0';
+            }
+            setDrinkCost(this.options[this.selectedIndex].value)
+            " >
+            <option class="d-none" disabled selected value> Pick a Drink </option>
+          </select><input id="custom-drink" name="customDrink" style="display:none;" disabled="disabled" 
+          class="form-control form-control-lg" type="text" maxlength="25"
+          onfocusout="if(this.value==''){toggleField(this,this.previousSibling);}">
+      </div>
+      <div class="mb-3">
+        <label for="name-input" class="form-label">Number of drinks</label>
+        <select
+          name="amount"
+          required id="drink-amount" class="form-select form-select-lg mb-3" >
+          <option selected>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+
+      <input id="drink-cost" name="drinkCost" type="number" placeholder="10" />
+
       <!-- field for bots -->
       <div class="mb-3 d-none">
         <label for="email-input" class="form-label">Email</label>
@@ -61,7 +108,7 @@
 
       <div class="mb-3">
         <label for="comment-input" class="form-label">Comments</label>
-        <textarea  id="comment-input" class="form-control" id="exampleFormControlTextarea1" name="comments" placeholder="write us love letters" rows="2"></textarea>
+        <textarea  id="comment-input" class="form-control" name="comments" placeholder="write us love letters" rows="2"></textarea>
       </div>
       <div class="d-flex justify-content-center">
       <button class="xmas-button green" type="button" onclick="verifyOrder();" value="Order some shit">Grab a Drink</button>
@@ -73,25 +120,6 @@
 </div>
 
 <%- include ("../partials/footer.ejs") %>
-
-  <!-- <div id="location-error-modal" class="modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h6 class="fw-bold modal-title">WHERE ARE YOU, THE NORTH POLE?</h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <p>Looks like you're not at the party. 
-  Reach out to us for the address
-  Jake: 678-736-1277</p>
-        </div>
-        <div class="modal-footer justify-content-center">
-            <a class="xmas-button order-cell-small" href="sms:6787361277&body=drink4thekids%20Christmas%20party%20address%3F">Text Jake</a></p>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
   <div id="date-error-modal" class="modal fade" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">

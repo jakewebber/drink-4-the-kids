@@ -4,14 +4,15 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false
-    }
+    },
+    multipleStatements: true
   });
 
 const getOrders = (request, response) => {
     pool.query('SELECT * FROM drink_orders WHERE is_done != true ORDER BY date DESC', (error, result) => {
         if (error) {
             console.error(error);
-            res.send("Error " + err)
+            result.send("Error " + err)
         }
         response.status(200).json(result.rows)
         const results = { 'results': (result) ? result.rows : null};
@@ -20,23 +21,24 @@ const getOrders = (request, response) => {
   }
 
 const createOrder = (request, response) => {
-    let text = 'INSERT INTO drink_orders(name, drink_order, date, comments, is_paid, is_done) VALUES ($1, $2, NOW(), $3, false, false) RETURNING id';
-    pool.query(text, [request.body.name, request.body.drink, request.body.comments], (error, result) => {
-      if (error) {
-        console.log('error')
-        throw error;
-      }
-      // field from form bots - do nothing
-      if(request.body.email){
-        return;
-      }
+  let text = 'INSERT INTO drink_orders2(name, amount, cost, drink_order, date, comments, is_paid, is_done) VALUES ($1, $2, $3, $4, NOW(), $5, false, false) RETURNING id';
+   
+  pool.query(text, [request.body.name, request.body.amount, request.body.amount * drinkCost, drinkName, request.body.comments], (error, result) => {
+    if (error) {
+      console.log('error')
+      throw error;
+    }
+    // field from form bots - do nothing
+    if(request.body.email){
+      return;
+    }
 
-      // append result ID to url for searching on order page
-      var id = result.rows[0].id;
-      var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
-      response.redirect(url);
-    })
-  }
+    // append result ID to url for searching on order page
+    var id = result.rows[0].id;
+    var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
+    response.redirect(url);
+  })
+}
 
 const updatePaid = (request, response) => {
     const { orderId, paidStatus } = request.body
@@ -77,10 +79,21 @@ const getOrdersAdmin = async (request, response) => {
   pool.query('SELECT * FROM drink_orders ORDER BY date DESC', (error, result) => {
       if (error) {
           console.error(error);
-          res.send("Error " + err)
+          result.send("Error " + err)
       }
       const results = { 'results': (result) ? result.rows : null};
       response.render('pages/admin', results );
+  })
+}
+
+const getMegatronStats = async (request, response) => {
+  pool.query('SELECT * FROM orders_by_name ORDER BY total_cost DESC', (error, result) => {
+      if (error) {
+          console.error(error);
+          res.send("Error " + err)
+      }
+      const results = { 'results': (result) ? result.rows : null};
+      response.render('pages/megatron', results );
   })
 }
 
@@ -89,5 +102,6 @@ const getOrdersAdmin = async (request, response) => {
       createOrder,
       updatePaid,
       updateDone,
-      getOrdersAdmin
+      getOrdersAdmin,
+      getMegatronStats
   }

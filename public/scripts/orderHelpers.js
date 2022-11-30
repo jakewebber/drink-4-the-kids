@@ -27,6 +27,14 @@ function locationError(pos) {
     alert(`ERROR(${err.code}): ${err.message}`);
 }
 
+function toggleField(hideObj,showObj){
+    hideObj.disabled=true;        
+    hideObj.style.display='none';
+    showObj.disabled=false;   
+    showObj.style.display='inline';
+    showObj.focus();
+  }
+
 verifyOrder = function(){
     // saving name for repeat form submissions
     var nameValue = document.getElementById('name-input').value;
@@ -40,21 +48,13 @@ verifyOrder = function(){
     if(!form[0].checkValidity()){
         form[0].reportValidity();
     }
-    else if(today < start || today > end){ // verify party date
+    else if((today < start || today > end) && location.hostname !== 'localhost')
+    { // verify party date
         new bootstrap.Modal(document.getElementById('date-error-modal')).show();
-    }else{
-    form.submit();
+    }
+    else
+    {
+        form.submit();
     }   
-        // if (navigator.geolocation) {
-    //     var options = {
-    //     enableHighAccuracy: true,
-    //     timeout: 5000,
-    //     maximumAge: 0
-    //     };
-    //     var position = navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options);
-    // } else {
-    //     alert("Geolocation is not supported by this browser.");
-    // }
-
 
 }
