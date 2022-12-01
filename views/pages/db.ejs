@@ -5,6 +5,20 @@ let orderElemId = window.location.hash
 
 window.onload = function() {
       if(orderElemId){ // user is checking a specific order
+        var ordersData = JSON.parse(document.getElementById('orders-data').innerHTML);
+        var order = ordersData.find(x=> x.id == orderElemId.substring(7));
+
+        if(order){
+          var note = `${order.name} - ${order.drink_title} ${order.amount > 1 ? 'x' + order.amount : ''}`;
+          var venmoUrl = `https://venmo.com/jacobwebber?txn=pay&amount=${order.cost}&note=${note}`.replace(/ /g, '%20');
+          $('#venmo-link').attr('href', venmoUrl);
+          $('#venmo-link-modal').attr('href', venmoUrl);
+
+          var cashappUrl = `https://cash.app/$wakejebber/${order.cost}`
+          $('#cashapp-link').attr('href', cashappUrl);
+          $('#cashapp-link-modal').attr('href', cashappUrl); 
+        }
+
         var orderElem = document.getElementById(orderElemId.substring(1));
         if(orderElem != null){ // if visible, highlight and navigate to the order
             orderElem.classList.add('current-order');
@@ -12,9 +26,6 @@ window.onload = function() {
         }else { // if not visible, drink is completed - display ready modal
           new bootstrap.Modal(document.getElementById('ready-modal')).show();
         }
-
-        // show the payment footer after an order
-        document.getElementById('db-footer').classList.add('d-inline-block');
       }
 } 
 </script>
@@ -37,6 +48,7 @@ const statusClass = {
     complete: "far fa-check-square finished-color"
 };
 %> -->
+<div id="orders-data" class="d-none"><%= JSON.stringify(results)%></div>
 
 <div class="container-fluid">
     <div class="fs-4 text-center">Drink orders show here. Refresh to check your spot in the queue.</div>
@@ -51,7 +63,7 @@ const statusClass = {
     <% results.forEach((order, i)=>{  %>
   <div id="order-<%=order.id%>" class="row main-row pt-2" data-index="<%= count %>">
     <div class="order-cell col-5"><%= order.name %></div>
-    <div class="order-cell col-5"><%= order.drink_order %> </div>
+    <div class="order-cell col-5"><%= order.drink_title%> </div>
     <div class="order-cell col-3 d-none">
       <%= new Intl.DateTimeFormat('en-US', 
       { month: 'short', day: 'numeric'}
@@ -68,7 +80,7 @@ const statusClass = {
     <% }) %>
 </div>
 <div id="db-footer">
-<%- include ("../partials/footer.ejs") %>
+  <%- include ("../partials/footer.ejs") %>
 </div>
 
 
@@ -87,8 +99,8 @@ const statusClass = {
         </div>
         <div class="modal-footer justify-content-center">
             <a class="payment-icon paypal" href="https://paypal.me/jacobwwebber"></a>
-            <a class="payment-icon cashapp" href="https://cash.app/$wakejebber"></a>
-            <a class="payment-icon venmo" href="https://venmo.com/jacobwebber?txn=pay&note=drink4dakids"></a>        
+            <a id="cashap-link-modal" class="payment-icon cashapp" href="https://cash.app/$wakejebber"></a>
+            <a id="venmo-link-modal" class="payment-icon venmo" href="https://venmo.com/jacobwebber?txn=pay&note=drink4dakids"></a>        
         </div>
       </div>
     </div>

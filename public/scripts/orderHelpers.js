@@ -27,13 +27,7 @@ function locationError(pos) {
     alert(`ERROR(${err.code}): ${err.message}`);
 }
 
-function toggleField(hideObj,showObj){
-    hideObj.disabled=true;        
-    hideObj.style.display='none';
-    showObj.disabled=false;   
-    showObj.style.display='inline';
-    showObj.focus();
-  }
+
 
 verifyOrder = function(){
     // saving name for repeat form submissions

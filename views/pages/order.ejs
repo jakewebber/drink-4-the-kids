@@ -13,18 +13,20 @@
     var options = $("#drink-selector");
     $.getJSON("/assets/alldrinks.json", function (result) {
       result.forEach((item) => {
-          options.append(new Option(item.name, item.id));
+          options.append(new Option(item.name, item.name));
       });
       options.append(new Option('Type a custom drink...', 'customDrink'));
     });
 
+    // assign drink selector from url param id
     if(selectedId){
       $.getJSON("/assets/alldrinks.json", function (result) {
           var drink = result.find(x=> x.id == selectedId);
-          document.getElementById("drink-selector").value = drink.id;
+          document.getElementById("drink-selector").value = drink.name;
       });
     }
-
+    
+    //maintain localstorage saved name
     var savedName = localStorage.getItem('name');
     if(savedName){
       document.getElementById("name-input").value = savedName;
@@ -32,21 +34,45 @@
   });
 
 
-  function setDrinkCost(drinkId){
+  function setDrinkCost(drinkName){
     var costField = $("#drink-cost");
 
-    if(!drinkId){
-      costField.value = 10;
+    if(!drinkName || drinkName == 'customDrink'){
+      costField.val(10);
     }else{
       $.getJSON("/assets/alldrinks.json", function (result) {
-          var drink = result.find(x=> x.id == drinkId);
+          var drink = result.find(x=> x.name == drinkName);
           if(drink){
             drinkCost = parseInt(drink.price);
             costField.val(drinkCost);
           }
       });
     }
+  }
 
+  function checkCustomDrink(self){
+    if(self.options[self.selectedIndex].value=='customDrink'){
+      toggleField(document.getElementById('drink-selector'), document.getElementById('custom-drink-group'));
+      self.selectedIndex='0';
+      $('#drink-selector').attr('required', false);
+      $('#custom-drink').attr('required', true);
+    }
+    setDrinkCost(self.options[self.selectedIndex].value)   
+  }
+  
+  function clearCustomDrink(self){
+    this.value == '';
+    $('#drink-selector').attr('required', true);
+    $('#custom-drink').attr('required', false);
+    toggleField(document.getElementById('custom-drink-group'), document.getElementById('drink-selector'));
+  }
+
+  function toggleField(hideObj,showObj){
+    hideObj.disabled=true;
+    hideObj.style.display='none';
+    showObj.disabled=false;   
+    showObj.style.display='flex';
+    showObj.focus();
   }
 
 </script>
@@ -70,24 +96,27 @@
           <label for="drink-selector" class="form-label">Drink Order</label>
           <!-- <input id="drink-input" class="form-control form-control-lg" type="text" name="drink" maxlength="25" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Not even a glass of milk?')"  placeholder="make it good" required/> -->
           <select
-          name="drink"
-          required id="drink-selector" class="form-select form-select-lg mb-3" required 
+          name="drinkTitle"
+           id="drink-selector" class="form-select form-select-lg mb-3" required 
             oninput="this.setCustomValidity('')" 
             oninvalid="this.setCustomValidity('Not even a glass of milk?')"  
             placeholder="make it good"
-            onchange="if(this.options[this.selectedIndex].value=='customDrink'){
-              toggleField(this,this.nextSibling);
-              this.selectedIndex='0';
-            }
-            setDrinkCost(this.options[this.selectedIndex].value)
-            " >
+            onchange="checkCustomDrink(this)" >
             <option class="d-none" disabled selected value> Pick a Drink </option>
-          </select><input id="custom-drink" name="customDrink" style="display:none;" disabled="disabled" 
-          class="form-control form-control-lg" type="text" maxlength="25"
-          onfocusout="if(this.value==''){toggleField(this,this.previousSibling);}">
+          </select>
+          
+        <div id="custom-drink-group" class="input-group" style="display:none;">
+          <input class="form-control" 
+          id="custom-drink" name="customDrinkTitle" class="form-control form-control-lg" type="text" maxlength="25"
+          oninput="this.setCustomValidity('')" 
+          oninvalid="this.setCustomValidity('Not even a glass of milk?')" >  
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="button" onclick="clearCustomDrink(this)">Close</button>
+          </div>
+        </div>
       </div>
       <div class="mb-3">
-        <label for="name-input" class="form-label">Number of drinks</label>
+        <label for="name-input" class="form-label">How Many?</label>
         <select
           name="amount"
           required id="drink-amount" class="form-select form-select-lg mb-3" >
@@ -98,7 +127,7 @@
         </select>
       </div>
 
-      <input id="drink-cost" name="drinkCost" type="number" placeholder="10" />
+      <input id="drink-cost" class="d-none" name="drinkCost" type="number" placeholder="10" />
 
       <!-- field for bots -->
       <div class="mb-3 d-none">
@@ -119,7 +148,6 @@
 <img class="buddy-the-elf"  src="/images/buddytheelf.png">
 </div>
 
-<%- include ("../partials/footer.ejs") %>
 
   <div id="date-error-modal" class="modal fade" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">

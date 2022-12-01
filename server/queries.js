@@ -9,7 +9,7 @@ const pool = new Pool({
   });
 
 const getOrders = (request, response) => {
-    pool.query('SELECT * FROM drink_orders WHERE is_done != true ORDER BY date DESC', (error, result) => {
+    pool.query('SELECT * FROM drink_orders2 WHERE is_done != true ORDER BY date DESC', (error, result) => {
         if (error) {
             console.error(error);
             result.send("Error " + err)
@@ -20,19 +20,23 @@ const getOrders = (request, response) => {
     })
   }
 
+  /** Create a drink order.
+   * params: name, amount, cost, drinkTitle, comments */
 const createOrder = (request, response) => {
-  let text = 'INSERT INTO drink_orders2(name, amount, cost, drink_order, date, comments, is_paid, is_done) VALUES ($1, $2, $3, $4, NOW(), $5, false, false) RETURNING id';
-   
-  pool.query(text, [request.body.name, request.body.amount, request.body.amount * drinkCost, drinkName, request.body.comments], (error, result) => {
+  const { name, amount, drinkCost, drinkTitle, customDrinkTitle, comments} = request.body
+  let text = `INSERT INTO drink_orders2(name, amount, cost, drink_title, date, comments, is_paid, is_done) 
+              VALUES ($1, $2, $3, $4, NOW(), $5, false, false) 
+              RETURNING id`;
+
+
+  pool.query(text, [name, parseInt(amount), parseInt(amount * drinkCost), drinkTitle || customDrinkTitle, comments], (error, result) => {
     if (error) {
       console.log('error')
       throw error;
     }
     // field from form bots - do nothing
-    if(request.body.email){
-      return;
-    }
-
+    if(request.body.email) return;
+    
     // append result ID to url for searching on order page
     var id = result.rows[0].id;
     var url = result && result.rows.length > 0 ? '/db#order-' + id : '/db';
@@ -44,7 +48,7 @@ const updatePaid = (request, response) => {
     const { orderId, paidStatus } = request.body
     var isPaid = paidStatus ? 1 : 0;
     pool.query(
-        'UPDATE drink_orders SET is_paid = $1 WHERE id = $2',
+        'UPDATE drink_orders2 SET is_paid = $1 WHERE id = $2',
         [isPaid, orderId],
         (error, results) => {
         if (error) {
@@ -61,7 +65,7 @@ const updateDone = (request, response) => {
   const { orderId, doneStatus } = request.body
   var isDone = doneStatus ? 1 : 0;
   pool.query(
-      'UPDATE drink_orders SET is_done = $1 WHERE id = $2',
+      'UPDATE drink_orders2 SET is_done = $1 WHERE id = $2',
       [isDone, orderId],
       (error, results) => {
       if (error) {
@@ -76,7 +80,7 @@ const updateDone = (request, response) => {
 
 
 const getOrdersAdmin = async (request, response) => {
-  pool.query('SELECT * FROM drink_orders ORDER BY date DESC', (error, result) => {
+  pool.query('SELECT * FROM drink_orders2 ORDER BY date DESC', (error, result) => {
       if (error) {
           console.error(error);
           result.send("Error " + err)
