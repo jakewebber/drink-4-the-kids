@@ -15,22 +15,17 @@
 
 <%- include ("../partials/nav.ejs") %>
 
-<%
-const statusClass = {
-    waiting: "far fa-clock waiting-color",
-    inprogress: "far fa-hand-point-left",
-    complete: "far fa-check-square finished-color"
-};
-%>
+<%- include ("../partials/admin-nav.ejs",  {page: "main"}); %>
 
-<div class="container-fluid">
-    <div class="fs-4 text-center text-dark">Drink orders show here. Refresh to check your spot in the queue.</div>
-
+<div class="tab-content bg-dark">
+  <div role="tabpanel" class="fade show active tab-pane" id="main">
     <table class="table table-striped table-bordered table-dark" data-toggle="table" data-flat="true" data-search="true" >
       <thead class="thead-dark">
         <tr>
             <th data-field="" data-sortable="true">Name</th>
             <th data-field="" data-sortable="true">Order</th>
+            <th data-field="" data-sortable="true">Amount</th>
+            <th data-field="" data-sortable="true">Cost</th>
             <th data-field="" data-sortable="true">Date</th>
             <th data-field="" data-sortable="true">Paid</th>
             <th data-field="" data-sortable="true">Status</th>
@@ -41,8 +36,10 @@ const statusClass = {
         <% results.forEach((order)=>{  %>
             <tr id="order-id-<%=order.id%>" data-index="<%= count %>">
                 <td><%= order.name %></td>
-                <td><%= order.drink_order %> </td>
-                <td><%= new Date(new Date(order.date).setHours(new Date(order.date).getHours() + 7)).toLocaleString() %></td>
+                <td><%= order.drink_title %> </td>
+                <td><%= order.amount %> </td>
+                <td>$<%= order.cost %> </td>
+                <td><%= new Date(new Date(order.date).setHours(new Date(order.date).getHours() - 5)).toLocaleString() %></td>
                 <td>
                   <form id="paid-<%=order.id%>" method="POST" action="/updatePaid" target="dummyframe">
                     <input type="checkbox" name="paidStatus" onchange="document.getElementById('paid-<%=order.id%>').submit()"  <%- order.is_paid ? 'checked' : '' %> data-on="yes" data-offstyle="danger" data-off="no" data-toggle="toggle">
@@ -64,8 +61,9 @@ const statusClass = {
         <% }) %>
       </tbody>
     </table>
+    </div>
     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-
+    </div>
 </body>
 </html>
 <script type="text/javascript">

@@ -23,19 +23,19 @@ const getOrders = (request, response) => {
   /** Create a drink order.
    * params: name, amount, cost, drinkTitle, comments */
 const createOrder = (request, response) => {
+  // field from form bots - do nothing
+  if(request.body.email || request.body.comments.length > 500) return;
+
   const { name, amount, drinkCost, drinkTitle, customDrinkTitle, comments} = request.body
   let text = `INSERT INTO drink_orders2(name, amount, cost, drink_title, date, comments, is_paid, is_done) 
               VALUES ($1, $2, $3, $4, NOW(), $5, false, false) 
               RETURNING id`;
 
-
-  pool.query(text, [name, parseInt(amount), parseInt(amount * drinkCost), drinkTitle || customDrinkTitle, comments], (error, result) => {
+  pool.query(text, [name.trim(), parseInt(amount), parseInt(amount * drinkCost), drinkTitle || customDrinkTitle.trim(), comments.trim()], (error, result) => {
     if (error) {
       console.log('error')
       throw error;
     }
-    // field from form bots - do nothing
-    if(request.body.email) return;
     
     // append result ID to url for searching on order page
     var id = result.rows[0].id;
@@ -78,6 +78,23 @@ const updateDone = (request, response) => {
   )
 }
 
+const closeBarTab = (request, response) => {
+  const { barTabName } = request.body
+
+  pool.query(
+      `UPDATE drink_orders2 SET is_paid = true WHERE UPPER(name) = UPPER($1) and is_paid = false`,
+      [barTabName],
+      (error, results) => {
+      if (error) {
+          throw error;
+      }
+      var msg = `paid bar tab for ${barTabName}}`;
+      console.log(msg)
+      response.status(200).send(msg);
+      }
+  )
+}
+
 
 const getOrdersAdmin = async (request, response) => {
   pool.query('SELECT * FROM drink_orders2 ORDER BY date DESC', (error, result) => {
@@ -90,14 +107,14 @@ const getOrdersAdmin = async (request, response) => {
   })
 }
 
-const getMegatronStats = async (request, response) => {
+const getGroupedOrders = async (request, response) => {
   pool.query('SELECT * FROM orders_by_name ORDER BY total_cost DESC', (error, result) => {
       if (error) {
           console.error(error);
           res.send("Error " + err)
       }
       const results = { 'results': (result) ? result.rows : null};
-      response.render('pages/megatron', results );
+      response.render('pages/admintab', results );
   })
 }
 
@@ -106,6 +123,7 @@ const getMegatronStats = async (request, response) => {
       createOrder,
       updatePaid,
       updateDone,
+      closeBarTab,
       getOrdersAdmin,
-      getMegatronStats
+      getGroupedOrders
   }

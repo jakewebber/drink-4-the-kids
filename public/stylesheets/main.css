@@ -5,8 +5,9 @@ body{
 }
 
 .admin{
-  background: #ccc;
+  background: #333;
 }
+
 
   .navbar + .jumbotron {
     margin-top: -20px; }
