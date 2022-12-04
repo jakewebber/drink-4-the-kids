@@ -27,8 +27,6 @@ function locationError(pos) {
     alert(`ERROR(${err.code}): ${err.message}`);
 }
 
-
-
 verifyOrder = function(){
     // saving name for repeat form submissions
     var nameValue = document.getElementById('name-input').value;
