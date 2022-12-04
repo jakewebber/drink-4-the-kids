@@ -107,14 +107,14 @@ const getOrdersAdmin = async (request, response) => {
   })
 }
 
-const getGroupedOrders = async (request, response) => {
+const getGroupedOrders = async (request, response, page) => {
   pool.query('SELECT * FROM orders_by_name ORDER BY total_cost DESC', (error, result) => {
       if (error) {
           console.error(error);
           res.send("Error " + err)
       }
       const results = { 'results': (result) ? result.rows : null};
-      response.render('pages/admintab', results );
+      response.render(`pages/${page}`, results );
   })
 }
 
