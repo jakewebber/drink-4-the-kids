@@ -7,10 +7,13 @@
 <head>
   <%- include ("../partials/header.ejs") %>
 </head>
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-<script>
+<script type="text/javascript">
+  function openDonationModal(name){
+    document.getElementById('extra-donation-name').value = name;
+    var modal = new bootstrap.Modal(document.getElementById('add-donation-modal'), {});
+    modal.show();
+  }
 </script>
 
 <body class="admin">
@@ -19,16 +22,18 @@
 
 <%- include ("../partials/admin-nav.ejs",  {page: "tab"}); %>
 
-<div class="tab-content bg-dark">
+<div class="admin-content bg-dark container-fluid h-100">
 <!-- BAR TAB ---------------------------------------------->
     <div id="bartab">
       <table class="table table-striped table-bordered table-dark" data-toggle="table" data-flat="true" data-search="true" >
         <thead class="thead-dark">
           <tr>
               <th data-field="" data-sortable="true">Name</th>
-              <th data-field="" data-sortable="true">Total Drinks</th>
+              <th data-field="" data-sortable="true">Drinks</th>
               <th data-field="" data-sortable="true">Total Cost</th>
+              <th data-field="" data-sortable="true">Total Donated</th>
               <th data-field="" data-sortable="true">Unpaid </th>
+              <th data-field="" data-sortable="true"></th>
               <th data-field="" data-sortable="true"></th>
           </tr>
         </thead>
@@ -36,9 +41,11 @@
           <% var count = 0; %>
           <% results.forEach((order)=>{  %>
             <tr id="order-id-<%=count%>" data-index="<%= count %>">
+
               <td><%= order.name %></td>
               <td><%= order.total_drinks %> </td>
               <td>$<%= order.total_cost %> </td>
+              <td>$<%= order.total_donated %> </td>
               <td>$<%= order.unpaid_cost %> </td>
               <td>
               <form id="done-<%=count%>" method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 50)" action="/closeBarTab" target="dummyframe">
@@ -46,37 +53,37 @@
                 <button class="btn btn-success <%= order.unpaid_cost == 0 ? 'disabled btn-outline-primary' : '' %>" type="submit">Pay Tab</button>
               </form>
             </td>
+            <td>
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="openDonationModal('<%= order.name%>')">Donate</button>
+            </td>
           </tr>
           <% }) %>
-          
         </tbody>
       </table>
       </div>
-    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-
+     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
     </div>
+
+    <div id="add-donation-modal" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="fw-bold">Add an extra donation </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <form id="extra-donation" method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 50)" action="/addExtraDonation" target="dummyframe">
+              <input id="extra-donation-name" name="name" readonly="readonly" />
+              <div class="input-group input-group-sm mb-3">
+                <input type="number" required class="inputsm form-control" placeholder="donation" inputmode="decimal" pattern="[0-9]*"  name="amount" />
+                <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Add Extra</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
-<script type="text/javascript">
-  // Select all checkboxes with the name 'settings' using querySelectorAll.
-  //  $('form').each((index, form) => {
-  //     form.addEventListener('submit', function(e) {
-  //       e.preventDefault();
-  //       var formData = new FormData();
-  //       formData.append(form[0].name, form[0].value)
-
-  //       $.ajax({
-  //           url: form.action,
-  //           type: 'POST',
-  //           data: formData,
-  //           success: function (data) {
-  //             console.log('done')
-  //               alert(data)
-  //           },
-  //           cache: false,
-  //           contentType: false,
-  //           processData: false
-  //       });
-  //     });
-  // });
-</script>

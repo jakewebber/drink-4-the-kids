@@ -175,3 +175,13 @@ h3{
   color: white;
 }
 
+.admin-nav{
+position:fixed;
+top:0;
+width:100%;
+background: #333;
+}
+
+.admin-content{
+  padding-top:50px;
+}

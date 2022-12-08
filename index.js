@@ -27,6 +27,7 @@ express()
   .get('/admin', (req, res) => db.getOrdersAdmin(req, res))
   .get('/admintab', (req, res) => db.getGroupedOrders(req, res, 'admintab'))
   .get('/jumbotron', (req, res) => db.getGroupedOrders(req, res, 'jumbotron'))
+  .get('/getNames', (req, res) => db.getNames(req, res))
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
@@ -47,5 +48,7 @@ express()
   .post('/updatePaid', (req, res) => db.updatePaid(req, res))
   .post('/updateDone', (req, res) => db.updateDone(req, res))
   .post('/closeBarTab', (req, res) => db.closeBarTab(req, res))
+  .post('/addExtraDonation', (req, res) => db.addExtraDonation(req, res))
+
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

@@ -95,6 +95,37 @@ const closeBarTab = (request, response) => {
   )
 }
 
+const addExtraDonation = (request, response) => {
+  const { name, amount } = request.body
+  pool.query(
+      `INSERT INTO extra_donations (name, amount, date)
+      SELECT $1, $2, NOW()`,
+      [name, amount],
+      (error, results) => {
+      if (error) {
+          throw error;
+      }
+      var msg = `added donation amount ${amount} to ${name}`;
+      console.log(msg)
+      response.status(200).send(msg);
+      }
+  )
+}
+
+
+
+const getNames = (request, response) => {
+  pool.query(
+      `SELECT name FROM orders_by_name`,
+      (error, result) => {
+      if (error) {
+          throw error;
+      }
+      response.status(200).json(result.rows);
+      }
+  )
+}
+
 
 const getOrdersAdmin = async (request, response) => {
   pool.query('SELECT * FROM drink_orders2 ORDER BY date DESC', (error, result) => {
@@ -108,7 +139,7 @@ const getOrdersAdmin = async (request, response) => {
 }
 
 const getGroupedOrders = async (request, response, page) => {
-  pool.query('SELECT * FROM orders_by_name ORDER BY total_cost DESC', (error, result) => {
+  pool.query('SELECT * FROM totals_by_name ORDER BY unpaid_cost DESC', (error, result) => {
       if (error) {
           console.error(error);
           res.send("Error " + err)
@@ -120,9 +151,11 @@ const getGroupedOrders = async (request, response, page) => {
 
   module.exports = {
       getOrders,
+      getNames,
       createOrder,
       updatePaid,
       updateDone,
+      addExtraDonation,
       closeBarTab,
       getOrdersAdmin,
       getGroupedOrders
