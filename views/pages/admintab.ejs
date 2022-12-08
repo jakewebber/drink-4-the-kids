@@ -28,12 +28,12 @@
       <table class="table table-striped table-bordered table-dark" data-toggle="table" data-flat="true" data-search="true" >
         <thead class="thead-dark">
           <tr>
+            <th></th>
               <th data-field="" data-sortable="true">Name</th>
               <th data-field="" data-sortable="true">Drinks</th>
               <th data-field="" data-sortable="true">Total Cost</th>
               <th data-field="" data-sortable="true">Total Donated</th>
               <th data-field="" data-sortable="true">Unpaid </th>
-              <th data-field="" data-sortable="true"></th>
               <th data-field="" data-sortable="true"></th>
           </tr>
         </thead>
@@ -41,7 +41,14 @@
           <% var count = 0; %>
           <% results.forEach((order)=>{  %>
             <tr id="order-id-<%=count%>" data-index="<%= count %>">
-
+              <td>
+                <form id="extra-donation" method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 50)" action="/addExtraDonation" target="dummyframe">
+                <input type="hidden" name="name" value="<%=order.name%>" />
+                <div>
+                  <input type="number" style="width: 100px" width="20" required class="inputsm" placeholder="donation" inputmode="decimal" pattern="[0-9]*"  name="amount" />
+                </div>
+                  <button class="btn btn-sm btn-primary" type="submit" data-bs-dismiss="modal">AddDonation</button>
+              </form></td>
               <td><%= order.name %></td>
               <td><%= order.total_drinks %> </td>
               <td>$<%= order.total_cost %> </td>
@@ -53,9 +60,9 @@
                 <button class="btn btn-success <%= order.unpaid_cost == 0 ? 'disabled btn-outline-primary' : '' %>" type="submit">Pay Tab</button>
               </form>
             </td>
-            <td>
+            <!-- <td>
               <button class="btn btn-primary" type="button" onclick="openDonationModal('<%= order.name%>')">Donate</button>
-            </td>
+            </td> -->
           </tr>
           <% }) %>
         </tbody>
