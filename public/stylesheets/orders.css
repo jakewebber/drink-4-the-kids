@@ -75,11 +75,6 @@ input, textarea{
   background: #eee;
 }
 
-.modal-footer{
-  border-top: 1px solid #999;
-  background: #ccc;
-}
-
 label{
   color: white;
 }

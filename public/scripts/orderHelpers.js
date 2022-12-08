@@ -27,7 +27,7 @@ function locationError(pos) {
     alert(`ERROR(${err.code}): ${err.message}`);
 }
 
-verifyOrder = function(){
+verifyOrder = function(self){
     // saving name for repeat form submissions
     var nameValue = document.getElementById('name-input').value;
     localStorage.setItem('name', nameValue);
@@ -38,15 +38,19 @@ verifyOrder = function(){
      end = new Date('2022-12-20');
 
     if(!form[0].checkValidity()){
+        self.textContent="Grab a Drink";
+        self.disabled = false;
         form[0].reportValidity();
     }
     else if((today < start || today > end) && location.hostname !== 'localhost')
     { // verify party date
+        self.textContent="Grab a Drink";
+        self.disabled = false;
         new bootstrap.Modal(document.getElementById('date-error-modal')).show();
     }
     else
     {
         form.submit();
-    }   
+    }
 
 }

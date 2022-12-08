@@ -34,8 +34,6 @@ $(document).ready(function () {
 
 <body class="admin">
 
-<%- include ("../partials/nav.ejs") %>
-
 <%- include ("../partials/admin-nav.ejs",  {page: "main"}); %>
 
 <div class="admin-content bg-dark">
@@ -45,7 +43,7 @@ $(document).ready(function () {
         <tr>
             <th data-field="" data-sortable="true">Name</th>
             <th data-field="" data-sortable="true">Order</th>
-            <th data-field="" data-sortable="true">Amount</th>
+            <th data-field="" data-sortable="true">Amt</th>
             <th data-field="" data-sortable="true">Cost</th>
             <th data-field="" data-sortable="true">Date</th>
             <th data-field="" data-sortable="true">Paid</th>
@@ -60,7 +58,12 @@ $(document).ready(function () {
                 <td><%= order.drink_title %> </td>
                 <td><%= order.amount %> </td>
                 <td>$<%= order.cost %> </td>
-                <td><%= new Date(new Date(order.date).setHours(new Date(order.date).getHours() - 5)).toLocaleString() %></td>
+                <td><%= new Date(new Date(order.date).setHours(new Date(order.date).getHours() - 5)).toLocaleString('en-US', options = {
+                  month: "short",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric"
+                }) %></td>
                 <td>
                   <form id="paid-<%=order.id%>" method="POST" action="/updatePaid" target="dummyframe">
                     <input type="checkbox" name="paidStatus" onchange="document.getElementById('paid-<%=order.id%>').submit()"  <%- order.is_paid ? 'checked' : '' %> data-on="yes" data-offstyle="danger" data-off="no" data-toggle="toggle">

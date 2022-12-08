@@ -54,17 +54,18 @@
               </form>
             </td>
             <td>
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="openDonationModal('<%= order.name%>')">Donate</button>
+              <button class="btn btn-primary" type="button" onclick="openDonationModal('<%= order.name%>')">Donate</button>
             </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
       </div>
+
      <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
     </div>
 
-    <div id="add-donation-modal" class="modal fade" tabindex="-1">
+    <div id="add-donation-modal" class="modal fade">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -83,7 +84,6 @@
           </div>
         </div>
       </div>
-    </div>
 
 </body>
 </html>

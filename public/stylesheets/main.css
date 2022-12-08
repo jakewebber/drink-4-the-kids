@@ -1,6 +1,7 @@
 body{
-  background-image: url("../images/snowflakes.jpg");
+  background-image: url("../images/bgmobile2.jpg");
   background-position: top;
+
   color: #eee;
 }
 
@@ -125,6 +126,7 @@ h3{
 .about{
   white-space: pre-wrap;
   color: #eee;
+  padding-bottom: 80px;
 }
 
 .main-row::nth-of-type(1){
@@ -134,7 +136,6 @@ h3{
 .success-link{
   color: rgb(40, 170, 79) !important;
   font-weight: bold !important;
-  text-decoration: underline !important;
 }
 
 ::placeholder {
@@ -151,9 +152,7 @@ h3{
 
 .bg-opaque{
   background-color: rgba(0, 0, 0, .3);
-  border-top: 5px solid rgba(0, 0, 0, .2);
-  border-bottom: 5px solid rgba(0, 0, 0, .2);
-
+  border-top: 1px solid rgba(0, 0, 0, .2);
 }
 
 .text-highlight{
