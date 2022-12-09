@@ -280,7 +280,7 @@ body {
   border-top: 5px solid rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(255, 50, 0, 0.8) inset;
   background: #D33144;
-  background: repeating-linear-gradient(45deg, #FFFFEE, #FFFFEE 15px, #D33144 15px, #D33144 30px);
+  background: repeating-linear-gradient(45deg, #FFFFEE, #FFFFEE 35px, #D33144 40px, #D33144 75px);
   -webkit-animation: load 8s ease-in infinite;
           animation: load 8s ease-in infinite;
 }
