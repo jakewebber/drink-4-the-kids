@@ -18,6 +18,9 @@ body {
     border-radius: 12px 12px 0 0;
     overflow: hidden;
   }
+  .leaderboard__title{
+    margin-left: 200px;
+  }
   .leaderboard header .leaderboard__title {
     position: absolute;
     z-index: 2;
@@ -31,6 +34,7 @@ body {
     letter-spacing: 6.5px;
   }
   .leaderboard__title--bottom {
+    padding-left: 20px;
     font-size: 50px;
     font-weight: 500;
     color: #00a745;
@@ -276,7 +280,7 @@ body {
 	border-radius: .4em;
   font-size: 30px;
   font-weight: 900;
-  left: 330px;
+  left: 300px;
   height: 50px;
   text-align: center;
   width: 100px;

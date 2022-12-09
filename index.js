@@ -26,7 +26,7 @@ express()
   .get('/faq', (req, res) => res.render('pages/faq'))
   .get('/admin', (req, res) => db.getOrdersAdmin(req, res))
   .get('/admintab', (req, res) => db.getGroupedOrders(req, res, 'admintab'))
-  .get('/jumbotron', (req, res) => db.getGroupedOrders(req, res, 'jumbotron'))
+  .get('/jumbotron', (req, res) => db.getGroupedOrdersByDonated(req, res, 'jumbotron'))
   .get('/getNames', (req, res) => db.getNames(req, res))
   .get('/db', async (req, res) => {
     try {

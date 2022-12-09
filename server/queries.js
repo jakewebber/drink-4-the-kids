@@ -149,6 +149,17 @@ const getGroupedOrders = async (request, response, page) => {
   })
 }
 
+const getGroupedOrdersByDonated = async (request, response, page) => {
+  pool.query('SELECT * FROM totals_by_name ORDER BY total_donated DESC', (error, result) => {
+      if (error) {
+          console.error(error);
+          res.send("Error " + err)
+      }
+      const results = { 'results': (result) ? result.rows : null};
+      response.render(`pages/${page}`, results );
+  })
+}
+
   module.exports = {
       getOrders,
       getNames,
@@ -158,5 +169,6 @@ const getGroupedOrders = async (request, response, page) => {
       addExtraDonation,
       closeBarTab,
       getOrdersAdmin,
-      getGroupedOrders
+      getGroupedOrders,
+      getGroupedOrdersByDonated
   }

@@ -15,7 +15,7 @@
 
   $(document).ready(function () {
     
-    var raisedAmount = <%=results.reduce((partialSum, a) => partialSum + (a.total_cost - a.unpaid_cost), 0) %>;
+    var raisedAmount = <%=results.reduce((partialSum, a) => partialSum + parseInt(a.total_donated), 0) %>;
     var goalAmount = 2000;
     var loader = document.getElementById('candy-loader');
     var loaderText = document.getElementById('loader-text').innerHTML = `$ ${raisedAmount}`;
@@ -57,7 +57,7 @@
     <div class="col-10">
   <div class="row">
     <article class="leaderboard">
-      <div class="row">
+      <div class="row px-4 d-inline-block">
         <h1 class="leaderboard__title">
           <span class="leaderboard__title--top text-bungee text-danger">Drink 4 The Kids</span>
           <span class="leaderboard__title--bottom text-ultra text-uppercase">Leaderboard</span></h1>
@@ -72,7 +72,7 @@
             <div class="info">
               <div class="top-leaderboard__name"><%= results[1].name %></div>
               <hr class="text-bar">
-              <div class="leaderboard__value">$<%= results[1].total_cost - results[1].unpaid_cost %> </div>
+              <div class="leaderboard__value">$<%= results[1].total_donated %> </div>
             </div>
         </div>
         <!-- FIRST PLACE -->
@@ -84,7 +84,7 @@
           <div class="info-first">
             <div class="first-leaderboard__name"><%= results[0].name %></div>
             <hr class="text-bar">
-            <div class="leaderboard__value">$<%= results[0].total_cost - results[0].unpaid_cost %> </div>
+            <div class="leaderboard__value">$<%= results[0].total_donated %> </div>
           </div>
         </div>
         <!-- THIRD PLACE -->
@@ -96,9 +96,10 @@
           <div class="info">
           <div class="top-leaderboard__name"><%= results[2].name %></div>
           <hr class="text-bar">
-          <div class="leaderboard__value">$<%= results[2].total_cost - results[2].unpaid_cost %> </div>
+          <div class="leaderboard__value">$<%= results[2].total_donated %> </div>
         </div>
         </div>
+        <div class="col-1"></div>
 
         <% results.slice(0, 3).forEach((user, i)=>{  %>
 
@@ -107,16 +108,29 @@
         <div class="row pt-4 justify-content-center">
           <div class="col-4 pt-4">
               <div class="leaderboard__profiles">
-                  <% results.slice(3, 10).forEach((user, i)=>{  %>
+                  <% results.slice(3, 7).forEach((user, i)=>{  %>
                         <article  id="order-id-<%=i%>" class="leaderboard__profile center">
                           <span class="leaderboard__rank"><%=i+4%></span>
                           <span class="leaderboard__name"><%= user.name %></span>
-                          <span class="leaderboard__value float-end"><span>$</span><%= user.total_cost - user.unpaid_cost %> </span>
+                          <span class="leaderboard__value float-end"><span>$</span><%= user.total_donated %> </span>
                         </article>
                         
                 <% }) %>
               </div>
             </div>
+            <div class="col-4 pt-4">
+              <div class="leaderboard__profiles">
+                  <% results.slice(7, 11).forEach((user, i)=>{  %>
+                        <article  id="order-id-<%=i%>" class="leaderboard__profile center">
+                          <span class="leaderboard__rank"><%=i+4%></span>
+                          <span class="leaderboard__name"><%= user.name %></span>
+                          <span class="leaderboard__value float-end"><span>$</span><%= user.total_donated %> </span>
+                        </article>
+                        
+                <% }) %>
+              </div>
+            </div>
+            <div class="col-1"></div>
           </div>
         </article>
       </div>
