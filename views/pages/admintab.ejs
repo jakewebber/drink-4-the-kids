@@ -31,9 +31,9 @@
             <th></th>
               <th data-field="" data-sortable="true">Name</th>
               <th data-field="" data-sortable="true">Drinks</th>
-              <th data-field="" data-sortable="true">Total Cost</th>
-              <th data-field="" data-sortable="true">Total Donated</th>
-              <th data-field="" data-sortable="true">Unpaid </th>
+              <th data-field="" data-sortable="true">Bill</th>
+              <th data-field="" data-sortable="true">Donated</th>
+              <th data-field="" data-sortable="true">Unpaid</th>
               <th data-field="" data-sortable="true"></th>
           </tr>
         </thead>
@@ -53,7 +53,7 @@
               <td><%= order.total_drinks %> </td>
               <td>$<%= order.total_cost %> </td>
               <td>$<%= order.total_donated %> </td>
-              <td>$<%= order.unpaid_cost %> </td>
+              <td class="<%= order.unpaid_cost > 0 ? 'font-red' : '' %>">$<%= order.unpaid_cost %> </td>
               <td>
               <form id="done-<%=count%>" method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 50)" action="/closeBarTab" target="dummyframe">
                 <input type="hidden" name="barTabName" value="<%=order.name%>" />

@@ -184,3 +184,8 @@ background: #333;
 .admin-content{
   padding-top:50px;
 }
+
+
+.font-red{
+  color: red !important;
+}

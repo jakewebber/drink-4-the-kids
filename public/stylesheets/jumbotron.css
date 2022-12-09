@@ -1,15 +1,16 @@
 body {
-  background: rgb(134, 2, 24) !important;
-  background-image: none;
-}
+  background-image: url(../images/jumbotronbg2.jpg) !important;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;}
 
 .leaderboard {
     width: 100%;
-    height: 300px;
+    height: 200px;
   }
   .leaderboard header {
     --start: 15%;
-    height: 325px;
+    height: 200px;
     background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(219, 54, 54, 0.33) 10%, rgba(219, 54, 54, 0.33) 17%), linear-gradient(to right, #049e1d, #006130);
     color: #fff;
     position: relative;
@@ -20,53 +21,38 @@ body {
   .leaderboard header .leaderboard__title {
     position: absolute;
     z-index: 2;
-    top: 50%;
-    right: calc(var(--start) * .75);
-    transform: translateY(-50%);
     text-transform: uppercase;
     margin: 0;
   }
-  .leaderboard header .leaderboard__title span {
-    display: block;
-  }
-  .leaderboard header .leaderboard__title--top {
-    font-size: 80px;
+
+  .leaderboard__title--top {
+    font-size: 60px;
     font-weight: 500;
     letter-spacing: 6.5px;
   }
-  .leaderboard header .leaderboard__title--bottom {
-    font-size: 60px;
+  .leaderboard__title--bottom {
+    font-size: 50px;
     font-weight: 500;
+    color: #00a745;
     letter-spacing: 3.55px;
-    opacity: 0.65;
-    transform: translateY(-2px);
   }
-  .leaderboard header .leaderboard__icon {
-    fill: #fff;
-    opacity: 0.55;
-    width: 200px;
-    position: absolute;
-    top: 50%;
-    left: var(--start);
-    transform: translate(-50%, -50%);
-  }
+
   .leaderboard__profiles {
-    background-color: #fff;
     border-radius: 0 0 12px 12px;
     padding: 15px 15px 20px;
     display: grid;
     row-gap: 8px;
   }
+
+
   .leaderboard__profile {
-    display: grid;
+    display: inline-block;
     grid-template-columns: 1fr 3fr 1fr;
     align-items: center;
     padding: 10px 30px 10px 10px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    border-radius: 60px;
+    box-shadow: 0 2px 7px 1px rgba(51, 51, 51, 1);
     cursor: pointer;
-    transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
     background-color: #fff;
   }
 
@@ -74,16 +60,48 @@ body {
     max-width: 100%;
     width: 200px;
   }
+  .leaderboard__rank {
+    border: 2px solid #1a8799;
+    border-radius: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: rgb(66, 66, 66);
+    font-weight: 600;
+    font-size: 40px;
+  }
   .leaderboard__name {
-    color: #eee;
+    vertical-align: super;
+    padding-left: 10px;
+    width: 300px;
+    color: rgb(66, 66, 66);
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.64px;
+  }
+
+  .top-leaderboard__name {
+    color: rgb(66, 66, 66);
     font-weight: 600;
     font-size: 50px;
     letter-spacing: 0.64px;
   }
+  .first-leaderboard__name {
+    color: rgb(66, 66, 66);
+    font-weight: 900;
+    font-size: 60px;
+  }
+  .info {
+    position: relative;
+    top: -20px;
+  }
+  .info-first {
+    position: relative;
+    top: -40px;
+  }
   .leaderboard__value {
     display: flex;
     justify-content: center;
-    color: #35d8ac;
+    color: #0e7c3c;
     font-weight: 700;
     font-size: 40px;
     text-align: right;
@@ -101,6 +119,8 @@ body {
   .placement {
     font-size: 70px;
     font-family: 'Bungee', cursive !important;
+    display: flex;
+    justify-content: center;
   }
 
   .gold{
@@ -116,6 +136,20 @@ body {
   }
   
   .circle {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #eee;
+    -webkit-box-shadow: 0px 6px 32px -4px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 6px 32px -4px rgba(0,0,0,1);
+    box-shadow: 0px 6px 32px -4px rgba(0,0,0,1);
+   }
+
+   .first-circle {
     border-radius: 50%;
     height: 300px;
     width: 300px;
@@ -142,22 +176,31 @@ body {
     text-align: center;
     font-size: 40px;
     font-weight: 900;
+    border: 3px solid #eee;
     -webkit-box-shadow: 0px 6px 32px -4px rgba(0,0,0,1);
     -moz-box-shadow: 0px 6px 32px -4px rgba(0,0,0,1);
     box-shadow: 0px 6px 32px -4px rgba(0,0,0,1);
     font-family: 'Bungee', cursive !important;
+   }
 
+   .hex-label.gold-label{
+    padding-top: 8px;
+    bottom: 40px;
+    height: 80px;
+    width: 80px;
+    border-radius:50px;
+    text-align: center;
    }
    .silver-label{
-    background: rgb(124, 255, 124);
+    background: rgb(189, 84, 171);
    }
 
    .gold-label{
-    background: rgb(213, 255, 60);
+    background: rgb(255 203 57);
    }
 
    .bronze-label{
-    background: rgb(213, 255, 60);
+    background: rgb(60, 255, 70);
    }
   
   
@@ -177,10 +220,7 @@ body {
     height: 500px;
   }
 
-  .placement{
-    display: flex;
-    justify-content: center;
-  }
+
 
   .text-bar{
     width: 50%;
@@ -192,4 +232,58 @@ body {
     opacity: 1;
     margin: auto;
 }
-  }
+  
+
+body {
+  background-color: #FAFAFA;
+  -webkit-animation: color 8s linear infinite;
+          animation: color 8s linear infinite;
+}
+
+#candy {
+  overflow: hidden;
+  display: flex;
+  align-self: flex-end;
+  opacity: 1;
+  width: 100px;
+  height: 100%;
+  border-radius: 100px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: 4px solid #b24445;
+  box-shadow: 40px 20px 15px -30px rgba(255, 0, 0, 0.1);
+  -webkit-animation: PARTY 8s cubic-bezier(0.87, -0.41, 0.19, 1.44) infinite;
+          animation: PARTY 8s cubic-bezier(0.87, -0.41, 0.19, 1.44) infinite;
+}
+
+#candy-loader {
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-self: flex-end;
+  border-top: 5px solid rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(255, 50, 0, 0.8) inset;
+  background: #D33144;
+  background: repeating-linear-gradient(45deg, #FFFFEE, #FFFFEE 15px, #D33144 15px, #D33144 30px);
+  -webkit-animation: load 8s ease-in infinite;
+          animation: load 8s ease-in infinite;
+}
+
+.speech-bubble {
+	position: absolute;
+  color: black;
+	background: #69ca79;
+	border-radius: .4em;
+  font-size: 30px;
+  font-weight: 900;
+  left: 330px;
+  height: 50px;
+  text-align: center;
+  width: 100px;
+  border: 2px solid rgb(0, 129, 28);
+
+}
+
+.speech-bubble.topside {
+  margin-top: 20px;
+}
