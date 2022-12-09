@@ -64,14 +64,13 @@
       </div>
       <div class="row justify-content-center top-three">
         <!-- SECOND PLACE -->
-        <div class="col-2 text-center">
+        <div class="col-3 text-center">
             <div class="placement">
               <img src="images/cousineddie.jpg" class="circle"  >
             </div>
             <span class="hex-label silver-label">2</span>
             <div class="info">
               <div class="top-leaderboard__name"><%= results[1].name %></div>
-              <hr class="text-bar">
               <div class="leaderboard__value">$<%= results[1].total_donated %> </div>
             </div>
         </div>
@@ -83,19 +82,17 @@
           <span class="hex-label gold-label">1</span>
           <div class="info-first">
             <div class="first-leaderboard__name"><%= results[0].name %></div>
-            <hr class="text-bar">
             <div class="leaderboard__value">$<%= results[0].total_donated %> </div>
           </div>
         </div>
         <!-- THIRD PLACE -->
-        <div class="col-2 text-center">
+        <div class="col-3 text-center">
           <div class="placement">
             <img src="images/badsanta.jpg" class="circle" >
           </div>
           <span class="hex-label bronze-label">3</span>
           <div class="info">
           <div class="top-leaderboard__name"><%= results[2].name %></div>
-          <hr class="text-bar">
           <div class="leaderboard__value">$<%= results[2].total_donated %> </div>
         </div>
         </div>
@@ -106,7 +103,7 @@
         <% }) %>
       </div>
         <div class="row pt-4 justify-content-center">
-          <div class="col-4 pt-4">
+          <div class="col-5 pt-4">
               <div class="leaderboard__profiles">
                   <% results.slice(3, 7).forEach((user, i)=>{  %>
                         <article  id="order-id-<%=i%>" class="leaderboard__profile center">
@@ -114,19 +111,17 @@
                           <span class="leaderboard__name"><%= user.name %></span>
                           <span class="leaderboard__value float-end"><span>$</span><%= user.total_donated %> </span>
                         </article>
-                        
                 <% }) %>
               </div>
             </div>
-            <div class="col-4 pt-4">
+            <div class="col-5 pt-4">
               <div class="leaderboard__profiles">
                   <% results.slice(7, 11).forEach((user, i)=>{  %>
                         <article  id="order-id-<%=i%>" class="leaderboard__profile center">
-                          <span class="leaderboard__rank"><%=i+4%></span>
+                          <span class="leaderboard__rank"><%=i+8%></span>
                           <span class="leaderboard__name"><%= user.name %></span>
                           <span class="leaderboard__value float-end"><span>$</span><%= user.total_donated %> </span>
                         </article>
-                        
                 <% }) %>
               </div>
             </div>

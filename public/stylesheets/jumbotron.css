@@ -19,7 +19,7 @@ body {
     overflow: hidden;
   }
   .leaderboard__title{
-    margin-left: 200px;
+    margin-left: 100px;
   }
   .leaderboard header .leaderboard__title {
     position: absolute;
@@ -65,14 +65,16 @@ body {
     width: 200px;
   }
   .leaderboard__rank {
+    margin-bottom: 15px;
     border: 2px solid #1a8799;
     border-radius: 50%;
     padding-left: 15px;
     padding-right: 15px;
-    color: rgb(66, 66, 66);
-    font-weight: 600;
-    font-size: 40px;
+    color: rgb(124 124 124);
+    font-size: 30px;
+    font-family: 'Fugaz One', cursive;
   }
+
   .leaderboard__name {
     vertical-align: super;
     padding-left: 10px;
@@ -84,15 +86,21 @@ body {
   }
 
   .top-leaderboard__name {
+    overflow-wrap: break-word;
+    line-height: 1;
     color: rgb(66, 66, 66);
     font-weight: 600;
-    font-size: 50px;
+    font-size: 40px;
     letter-spacing: 0.64px;
+    font-family: 'Fugaz One', cursive;
   }
   .first-leaderboard__name {
+    overflow-wrap: break-word;
+    line-height: 1;
     color: rgb(66, 66, 66);
     font-weight: 900;
-    font-size: 60px;
+    font-size: 50px;
+    font-family: 'Fugaz One', cursive;
   }
   .info {
     position: relative;
@@ -102,12 +110,16 @@ body {
     position: relative;
     top: -40px;
   }
+  .leaderboard__profiles .leaderboard__value {
+    color: #666;
+  }
+
   .leaderboard__value {
     display: flex;
     justify-content: center;
-    color: #0e7c3c;
-    font-weight: 700;
+    color: #1aaa56;
     font-size: 40px;
+    font-family: 'Bungee', cursive !important;
     text-align: right;
   }
   
