@@ -28,6 +28,7 @@ express()
   .get('/admintab', (req, res) => db.getGroupedOrders(req, res, 'admintab'))
   .get('/jumbotron', (req, res) => db.getGroupedOrdersByDonated(req, res, 'jumbotron'))
   .get('/getNames', (req, res) => db.getNames(req, res))
+  .get('/getUserBarTab', (req, res) => db.getUserBarTab(req, res))
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();

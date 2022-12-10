@@ -30,7 +30,7 @@ function locationError(pos) {
 verifyOrder = function(self){
     // saving name for repeat form submissions
     var nameValue = document.getElementById('name-input').value;
-    localStorage.setItem('name', nameValue);
+    localStorage.setItem('name', nameValue.trim());
 
     let form = $('#orderform');
     let today = new Date(),

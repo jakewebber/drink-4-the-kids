@@ -1,5 +1,48 @@
+<script>
+
+$(document).ready(function () {
+
+    //maintain localstorage saved name
+    var savedName = localStorage.getItem('name').trim();
+    if(savedName){
+      document.getElementById('bar-tab-nav').style.display = 'block';
+      document.getElementById("bar-tab-name").innerHTML = savedName;
+    }
+  });
+
+  function loadBarTab(){
+    document.getElementById('nav-checkbox').checked = false;
+    new bootstrap.Modal(document.getElementById('bar-tab-modal')).show();
+    var savedName = localStorage.getItem('name').trim();
+    $.ajax({
+        url: '/getUserBarTab',
+        type: 'GET',
+        data: {
+          name: savedName
+        },
+        dataType: 'json', // added data type
+        success: function (data) {
+          console.log(data)
+          document.getElementById("bar-tab-amount").innerHTML = data.total_amount;
+          document.getElementById("bar-tab-cost").innerHTML = data.total_cost;
+
+          var note = `${savedName} - ${data.total_amount} drinks - ${data.total_cost}`;
+          var venmoUrl = `https://venmo.com/jacobwebber?txn=pay&amount=${data.total_cost}&note=${note}`.replace(/ /g, '%20');
+          $('#tab-venmo-link').attr('href', venmoUrl);
+
+          var cashappUrl = `https://cash.app/$wakejebber/${data.total_cost}`
+          $('#tab-cashapp-link').attr('href', cashappUrl);
+        }
+    });
+
+    console.log(`namechange: ${self.value}`);
+  }
+
+</script>
+
+
 <div class="outer-menu">
-    <input class="checkbox-toggle" type="checkbox" />
+    <input id="nav-checkbox" class="checkbox-toggle" type="checkbox" />
     <div class="hamburger">
       <div></div>
     </div>
@@ -10,10 +53,36 @@
               <li><a class="h1 py-4"  href="/faq"><span class="fas fa-candy-cane"></span> FAQ</a></li>
               <li><a class="h1 py-4"  href="/charity"><span class="fas fa-hand-holding-heart"></span> Nicholas House</a></li>
               <li><a class="h1 py-4"  href="/db"><span class="fas fa-holly-berry"></span> Check Status</a></li>
+              <li id ="bar-tab-nav" style="display:none;"><a class="h1 py-4" onclick="loadBarTab()"><span class="fas fa-book"></span> Bar Tab</a></li>
             <li><a class="h1 py-4"  href="/order"><span class="fas fa-gifts"></span> Order</a></li>
             <li><a class="h1 py-4" href="/menu"><span class="fas fa-cocktail"></span> Menu</a></li>
             <li><a class="h1 py-4" href="/"><span class="fas fa-igloo"></span> Home</a></li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bar-tab-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="text-bungee green fs-1"><span class="fas fa-cocktail"></span>  BAR TAB <span class="fas fa-glass-whiskey"></span> </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="text-bungee" id="bar-tab-name"></div>
+          <div>TOTAL DRINKS: <span class="fs-2 fw-bold green" id="bar-tab-amount"></span></div>
+          <div>RECOMMENDED DONATION: <span class="fs-2 fw-bold green">$<span class="fw-bold" id="bar-tab-cost"></span></span></div>
+          <div class="fs-3" id="amount_owed"></div>
+          <div class="modal-footer justify-content-center">
+            <div class="">
+              <hr class="hr-bold">
+              <a class="payment-icon payment-icon-lg paypal" href="https://paypal.me/jacobwwebber"></a>
+              <a id="tab-cashapp-link" class="payment-icon payment-icon-lg cashapp" href="https://cash.app/$wakejebber"></a>
+              <a id="tab-venmo-link" class="payment-icon payment-icon-lg venmo" href="https://venmo.com/jacobwebber?txn=pay&note=drink4dakids"></a>
+          </div>
+          </div>
         </div>
       </div>
     </div>

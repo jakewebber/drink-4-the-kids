@@ -118,10 +118,10 @@ const getNames = (request, response) => {
   pool.query(
       `SELECT name FROM orders_by_name`,
       (error, result) => {
-      if (error) {
-          throw error;
-      }
-      response.status(200).json(result.rows);
+        if (error) {
+            throw error;
+        }
+        response.status(200).json(result.rows);
       }
   )
 }
@@ -149,6 +149,19 @@ const getGroupedOrders = async (request, response, page) => {
   })
 }
 
+const getUserBarTab = async (request, response, page) => {
+  const { name } = request.query
+  pool.query(`SELECT SUM(amount) AS total_amount, SUM(cost) as total_cost, name 
+              FROM drink_orders2 WHERE is_paid = false AND name = $1 
+              GROUP BY name`, [name], (error, result) => {
+      if (error) {
+          console.error(error);
+          res.send("Error " + err)
+      }
+      response.status(200).json(result.rows[0]);
+  })
+}
+
 const getGroupedOrdersByDonated = async (request, response, page) => {
   pool.query('SELECT * FROM totals_by_name ORDER BY total_donated DESC', (error, result) => {
       if (error) {
@@ -168,6 +181,7 @@ const getGroupedOrdersByDonated = async (request, response, page) => {
       updateDone,
       addExtraDonation,
       closeBarTab,
+      getUserBarTab,
       getOrdersAdmin,
       getGroupedOrders,
       getGroupedOrdersByDonated

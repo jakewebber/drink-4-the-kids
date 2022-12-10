@@ -41,13 +41,6 @@ window.onload = function() {
 
 <%- include ("../partials/nav.ejs") %>
 
-<!-- <%
-const statusClass = {
-    waiting: "far fa-clock waiting-color",
-    inprogress: "far fa-hand-point-left",
-    complete: "far fa-check-square finished-color"
-};
-%> -->
 <div id="orders-data" class="d-none"><%= JSON.stringify(results)%></div>
 
 <div class="container-fluid">
@@ -74,7 +67,6 @@ const statusClass = {
         ).format(order.date) %>
       </div>
       </div>
-    <!-- <div class="col-2 px-4"><i class="status-icon fa <%=statusClass[order.status] %>"></i></div> -->
     <span class="col-12 comment"><i class="far fa-comment-dots px-2"></i><%= order.comments %></span>
   </div>
     <% }) %>

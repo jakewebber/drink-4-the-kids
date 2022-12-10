@@ -81,7 +81,7 @@ h1{
   width: 47px;
   height: 47px;
   border-radius: 50%;
-  border: 1px solid #666;
+  border: 2px solid rgb(22, 22, 22);
   text-align: center;
   display: inline-flex;
   font-size: 20px;
@@ -188,4 +188,16 @@ background: #333;
 
 .font-red{
   color: red !important;
+}
+
+
+.hr-bold{
+  opacity: 1;
+  border-top: 2px solid #606060;
+}
+
+.payment-icon-lg{
+  width: 60px;
+  height: 60px;
+  background-size: 60px 60px;
 }
