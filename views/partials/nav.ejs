@@ -1,12 +1,12 @@
-<script>
+<!-- <script>
 
 $(document).ready(function () {
 
     //maintain localstorage saved name
-    var savedName = localStorage.getItem('name').trim();
+    var savedName = localStorage.getItem('name')
     if(savedName){
       document.getElementById('bar-tab-nav').style.display = 'block';
-      document.getElementById("bar-tab-name").innerHTML = savedName;
+      document.getElementById("bar-tab-name").innerHTML = savedName.trim();;
     }
   });
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
         data: {
           name: savedName
         },
-        dataType: 'json', // added data type
+        dataType: 'json',
         success: function (data) {
           if(data.total_amount > 0 && data.total_cost > 0){
             document.getElementById('bar-tab-info').style.display = 'block';
@@ -34,17 +34,18 @@ $(document).ready(function () {
 
             var cashappUrl = `https://cash.app/$wakejebber/${data.total_cost}`
             $('#tab-cashapp-link').attr('href', cashappUrl);
+
+            var paypalUrl = `https://paypal.me/jacobwwebber/${data.total_cost}`
+            $('#tab-paypal-link').attr('href', paypalUrl);
           }else{
             document.getElementById('bar-tab-info').style.display = 'none';
             document.getElementById('bar-tab-empty').style.display = 'block';
           }
         }
     });
-
-    console.log(`namechange: ${self.value}`);
   }
 
-</script>
+</script> -->
 
 
 <div class="outer-menu">
@@ -58,8 +59,8 @@ $(document).ready(function () {
           <ul>
               <li><a class="h1 py-4"  href="/faq"><span class="fas fa-candy-cane"></span> FAQ</a></li>
               <li><a class="h1 py-4"  href="/charity"><span class="fas fa-hand-holding-heart"></span> Nicholas House</a></li>
-              <li><a class="h1 py-4"  href="/db"><span class="fas fa-holly-berry"></span> Check Status</a></li>
-              <li id ="bar-tab-nav" style="display:none;"><a class="h1 py-4" onclick="loadBarTab()"><span class="fas fa-book"></span> Bar Tab</a></li>
+              <li><a class="h1 py-4"  href="/db"><span class="fas fa-holly-berry"></span> Drink Queue</a></li>
+              <!-- <li id ="bar-tab-nav" style="display:none;"><a class="h1 py-4" onclick="loadBarTab()"><span class="fas fa-book"></span> Pay Tab</a></li> -->
             <li><a class="h1 py-4"  href="/order"><span class="fas fa-gifts"></span> Order</a></li>
             <li><a class="h1 py-4" href="/menu"><span class="fas fa-cocktail"></span> Menu</a></li>
             <li><a class="h1 py-4" href="/"><span class="fas fa-igloo"></span> Home</a></li>
@@ -68,7 +69,7 @@ $(document).ready(function () {
       </div>
     </div>
   </div>
-
+<!-- 
   <div id="bar-tab-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -92,7 +93,7 @@ $(document).ready(function () {
           <div class="modal-footer justify-content-center">
             <div class="">
               <hr class="hr-bold">
-              <a class="payment-icon payment-icon-lg paypal" href="https://paypal.me/jacobwwebber"></a>
+              <a id="tab-paypal-link" class="payment-icon payment-icon-lg paypal" href="https://paypal.me/jacobwwebber"></a>
               <a id="tab-cashapp-link" class="payment-icon payment-icon-lg cashapp" href="https://cash.app/$wakejebber"></a>
               <a id="tab-venmo-link" class="payment-icon payment-icon-lg venmo" href="https://venmo.com/jacobwebber?txn=pay&note=drink4dakids"></a>
           </div>
@@ -100,4 +101,4 @@ $(document).ready(function () {
         </div>
       </div>
     </div>
-  </div>
+  </div> -->

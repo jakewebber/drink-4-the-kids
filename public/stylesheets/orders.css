@@ -1,5 +1,6 @@
 body.orders{
-background: #222;    
+  background-color: #000 !important;
+  background-image: none;
 }
 
 input, textarea{
@@ -7,20 +8,13 @@ input, textarea{
 }
 
 .order-grid{
-    color: #333;
+    color: #000;
     margin-bottom: 100px;
 }
   
-  .waiting-color{
-    color: #555;
-  }
-  
-  .finished-color{
-    color: green;
-  }
   
   .current-order {
-    background-color: rgb(45, 94, 43) !important;
+    background-color: rgb(230, 112, 112) !important;
     font-weight: bold;
     color: #ddd;
   }
@@ -29,15 +23,15 @@ input, textarea{
   }
 
   .main-row{
-      margin-top: 10px;
       min-height: 70px;
       background: #eee;
-      border-radius: 10px;
   }
 
   .comment{
       border-top: 1px solid rgba(0, 0, 0, 0.101);;
-    background: rgba(0, 0, 0, 0.2);
+    color: #666;
+    font-weight: bold;
+    padding-left: 18px;
   }
 
   .status-icon{
@@ -46,7 +40,19 @@ input, textarea{
   }
   
   .main-row .order-cell{
-      border-right: 1px solid #aaa;
+    overflow-wrap: break-word;
+  }
+
+  .main-row::nth-of-type(1){
+    border-bottom: 1px solid #666;
+  }
+  
+
+  .main-row:nth-child(odd) {
+    background: rgb(144, 194, 107);
+}
+  .main-row:nth-child(even) {
+    background: rgb(173 201 152);
   }
 
   .order-cell-small{

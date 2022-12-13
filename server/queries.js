@@ -9,14 +9,27 @@ const pool = new Pool({
   });
 
 const getOrders = (request, response) => {
-    pool.query('SELECT * FROM drink_orders2 WHERE is_done != true ORDER BY date DESC', (error, result) => {
+    pool.query('SELECT * FROM drink_orders2 WHERE is_done = false ORDER BY date DESC', (error, result) => {
         if (error) {
             console.error(error);
             result.send("Error " + err)
         }
-        response.status(200).json(result.rows)
+        //response.status(200).json(result.rows)
         const results = { 'results': (result) ? result.rows : null};
-        res.render('pages/db', results );
+        response.render('pages/db', results );
+    })
+  }
+
+  const getOrder = (request, response) => {
+    const { id } = request.query
+    pool.query('SELECT * FROM drink_orders2 WHERE id = $1 AND is_paid = false LIMIT 1', [id], (error, result) => {
+        if (error) {
+            console.error(error);
+            result.send("Error " + err)
+        }
+        //response.status(200).json(result.rows)
+        const results = { 'results': (result && result.rows > 0) ? result.rows[0] : null};
+        response.status(200).json(results);
     })
   }
 
@@ -175,6 +188,7 @@ const getGroupedOrdersByDonated = async (request, response, page) => {
 
   module.exports = {
       getOrders,
+      getOrder,
       getNames,
       createOrder,
       updatePaid,

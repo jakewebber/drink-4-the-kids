@@ -28,19 +28,9 @@ express()
   .get('/admintab', (req, res) => db.getGroupedOrders(req, res, 'admintab'))
   .get('/jumbotron', (req, res) => db.getGroupedOrdersByDonated(req, res, 'jumbotron'))
   .get('/getNames', (req, res) => db.getNames(req, res))
+  .get('/getOrder', (req, res) => db.getOrder(req, res))
   .get('/getUserBarTab', (req, res) => db.getUserBarTab(req, res))
-  .get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM drink_orders2 WHERE is_done != true ORDER BY date DESC');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
+  .get('/db', (req, res) => db.getOrders(req, res))
   .post('/send', (req, res) => {
     db.createOrder(req, res);
     console.log(req);

@@ -80,7 +80,7 @@ h1{
   background-size: 47px 47px;
   width: 47px;
   height: 47px;
-  border-radius: 50%;
+  border-radius: 5px;
   border: 2px solid rgb(22, 22, 22);
   text-align: center;
   display: inline-flex;
@@ -88,6 +88,14 @@ h1{
   margin: 4px 2px;
   cursor: pointer;
 }
+
+.payment-icon-lg{
+  width: 60px;
+  height: 60px;
+  background-size: 60px 60px;
+  border: 1px solid #eee;
+}
+
 .venmo{
   background-image: url("../images/venmo.png");
 }
@@ -104,7 +112,8 @@ h1{
   left: 0;
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, .5);
+  background: #ddd;
+  border-top: 2px solid #c9c9c9;
   text-align: center;
 }
 
@@ -127,10 +136,6 @@ h3{
   white-space: pre-wrap;
   color: #eee;
   padding-bottom: 80px;
-}
-
-.main-row::nth-of-type(1){
-  margin-top: 50px;
 }
 
 .success-link{
@@ -163,6 +168,10 @@ h3{
   font-family: 'Bungee', cursive !important;
 }
 
+.text-monserrat{
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
 .text-cursive{
   font-family: 'Fugaz One', cursive;
 }
@@ -193,11 +202,6 @@ background: #333;
 
 .hr-bold{
   opacity: 1;
-  border-top: 2px solid #606060;
+  border-top: 2px solid #eee;
 }
 
-.payment-icon-lg{
-  width: 60px;
-  height: 60px;
-  background-size: 60px 60px;
-}
