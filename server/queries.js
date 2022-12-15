@@ -22,13 +22,13 @@ const getOrders = (request, response) => {
 
   const getOrder = (request, response) => {
     const { id } = request.query
-    pool.query('SELECT * FROM drink_orders2 WHERE id = $1 AND is_paid = false LIMIT 1', [id], (error, result) => {
+    pool.query('SELECT * FROM drink_orders2 WHERE id = $1 LIMIT 1', [id], (error, result) => {
         if (error) {
             console.error(error);
             result.send("Error " + err)
         }
         //response.status(200).json(result.rows)
-        const results = { 'results': (result && result.rows > 0) ? result.rows[0] : null};
+        const results = (result && result.rows.length > 0) ? result.rows[0] : null;
         response.status(200).json(results);
     })
   }

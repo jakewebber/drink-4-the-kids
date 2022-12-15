@@ -28,6 +28,9 @@ window.onload = function() {
 
 function checkOrder(order){
   if(order){
+    document.getElementById("db-order").innerHTML = order.drink_title;
+    document.getElementById("db-donation").innerHTML = order.cost;
+
     var note = `${order.name} - ${order.drink_title} ${order.amount > 1 ? 'x' + order.amount : ''}`;
     var venmoUrl = `https://venmo.com/jacobwebber?txn=pay&amount=${order.cost}&note=${note}`.replace(/ /g, '%20');
     $('#venmo-link').attr('href', venmoUrl);
@@ -89,6 +92,8 @@ function checkOrder(order){
         </div>
         <div class="modal-body text-center">
           <p class="fs-3 text-monserrat">Slide over to the bar <i class="fas fa-cocktail"></i></p>
+          <div class="fs-3 text-monserrat float-left">Order: <span id="db-order"></span> </div>
+          <div class="fs-3 text-monserrat float-left">Donation: $<span id="db-donation"></span> </div>
               <img class="m-auto" width="180" height="160" src="images/buddy.png" alt="buddy">
               <a class="xmas-button green" href="/menu">Get another present</a></p>
         </div>

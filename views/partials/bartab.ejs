@@ -1,8 +1,6 @@
 <script>
 
 $(document).ready(function () {
-
-    //maintain localstorage saved name
     var savedName = localStorage.getItem('name')
     if(savedName){
       savedName = savedName.trim();
@@ -74,34 +72,5 @@ $(document).ready(function () {
           </ul>
         </div>
       </div>
-
-      <!-- <div class="container-fluid d-block">
-        <div class="row" >
-          <div class="text-bungee green fs-1"><span class="fas fa-cocktail"></span>  BAR TAB <span class="fas fa-glass-whiskey"></span> </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="text-center">
-          <div class="text-bungee" id="bar-tab-name"></div>
-          <div id="bar-tab-info" style="display:none;">
-            <div>TOTAL DRINKS: <span class="fs-2 fw-bold green" id="bar-tab-amount"></span></div>
-            <div>DONATION: <span class="fs-2 fw-bold green">$<span class="fw-bold" id="bar-tab-cost"></span></span></div>
-          </div>
-          <div class="fs-1" id="bar-tab-empty">
-            You're covered!
-            <br><br>
-            <a class="xmas-button green" href="/order">Grab a drink</a>
-
-          </div>
-          <div class="fs-3" id="amount_owed"></div>
-          <div class="justify-content-center">
-            <div class="">
-              <hr class="hr-bold">
-              <a id="tab-paypal-link" class="payment-icon payment-icon-lg paypal" href="https://paypal.me/jacobwwebber"></a>
-              <a id="tab-cashapp-link" class="payment-icon payment-icon-lg cashapp" href="https://cash.app/$wakejebber"></a>
-              <a id="tab-venmo-link" class="payment-icon payment-icon-lg venmo" href="https://venmo.com/jacobwebber?txn=pay&note=drink4dakids"></a>
-          </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
