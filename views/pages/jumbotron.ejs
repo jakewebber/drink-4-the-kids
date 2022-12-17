@@ -64,6 +64,7 @@
       </div>
       <div class="row justify-content-center top-three">
         <!-- SECOND PLACE -->
+        <% if( results[1]) { %>
         <div class="col-3 text-center">
             <div class="placement">
               <img src="images/cousineddie.jpg" class="circle"  >
@@ -74,6 +75,9 @@
               <div class="leaderboard__value">$<%= results[1].total_donated %> </div>
             </div>
         </div>
+        <% } %>
+
+        <% if( results[0]) { %>
         <!-- FIRST PLACE -->
         <div class="col-3 text-center">
           <div class="placement">
@@ -85,6 +89,10 @@
             <div class="leaderboard__value">$<%= results[0].total_donated %> </div>
           </div>
         </div>
+        <% } %>
+
+        <% if( results[3]) { %>
+
         <!-- THIRD PLACE -->
         <div class="col-3 text-center">
           <div class="placement">
@@ -97,6 +105,7 @@
         </div>
         </div>
         <div class="col-1"></div>
+        <% } %>
 
         <% results.slice(0, 3).forEach((user, i)=>{  %>
 
