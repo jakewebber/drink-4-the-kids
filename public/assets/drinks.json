@@ -26,8 +26,8 @@
     {
         "id": 3,
         "name": "Feliz Navidad",
-        "ingredients": ["tequila", "cointreau", "lime", "coconut", "jalapeno/berry/mezcal optional"],
-        "description": "Top shelf margaritas are never out of season. Get it berry, smokey, spicy, or classic.",
+        "ingredients": ["tequila", "cointreau", "lime", "agave", "berry/mezcal optional"],
+        "description": "Top shelf margaritas are never out of season. Get it berry, smokey, or classic.",
         "imageUrl": "/images/drinks/margarita.jpg",
         "price": "12"
     },
