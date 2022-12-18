@@ -141,7 +141,7 @@ const getNames = (request, response) => {
 
 
 const getOrdersAdmin = async (request, response) => {
-  pool.query('SELECT * FROM drink_orders2 ORDER BY date DESC', (error, result) => {
+  pool.query('SELECT * FROM drink_orders2 WHERE is_paid = false and is_done = false ORDER BY date DESC', (error, result) => {
       if (error) {
           console.error(error);
           result.send("Error " + err)
