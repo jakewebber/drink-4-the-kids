@@ -35,7 +35,7 @@ verifyOrder = function(self){
     let form = $('#orderform');
     let today = new Date(),
      start = new Date('2022-12-17'),
-     end = new Date('2022-12-20');
+     end = new Date('2022-12-18');
 
     if(!form[0].checkValidity()){
         self.textContent="Grab a Drink";
