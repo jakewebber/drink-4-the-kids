@@ -28,25 +28,25 @@
           });
       });
       // shots
-      $.getJSON("/assets/shots.json", function (result) {
-          result.forEach((drink, i) => {
-            var formattedIngredients =
-              $("#shot-list").append(`
-              <div class="row drink-bg my-2 py-2">
-                <div class="col-5">
-                  <img class="drink-img" src="${drink.imageUrl}" width="125" height="150"></img>
-                  </div>
-                <div class="col-7">
-                <div class="drink-title font-monospace">${drink.name}</div>
-                <div class="drink-description fst-italic"> ${drink.description} </div>
-                <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
-                <a class="btn btn-success" href="/order?id=${drink.id}">ORDER</a><span class="float-end drink-price"> ${ drink.price }</span>
-                </div>
-              </div>
-              `
-              );
-          });
-      });
+      // $.getJSON("/assets/shots.json", function (result) {
+      //     result.forEach((drink, i) => {
+      //       var formattedIngredients =
+      //         $("#shot-list").append(`
+      //         <div class="row drink-bg my-2 py-2">
+      //           <div class="col-5">
+      //             <img class="drink-img" src="${drink.imageUrl}" width="125" height="150"></img>
+      //             </div>
+      //           <div class="col-7">
+      //           <div class="drink-title font-monospace">${drink.name}</div>
+      //           <div class="drink-description fst-italic"> ${drink.description} </div>
+      //           <div class="drink-recipe"> ${ drink.ingredients.join(" ❄ ")} </div>
+      //           <a class="btn btn-success" href="/order?id=${drink.id}">ORDER</a><span class="float-end drink-price"> ${ drink.price }</span>
+      //           </div>
+      //         </div>
+      //         `
+      //         );
+      //     });
+      // });
 
       // other
       $.getJSON("/assets/other.json", function (result) {
@@ -87,16 +87,15 @@
 
     <div class="mx-1">
         <br><br>
-        <h3 class="text-center">work in progress</h3>
 <h2 class="text-center">Want something different?<br>Ask what we can whip up for you</h2>
 <h1 class="title text-cursive">Cocktails</h1>
         <div id="cocktail-list"></div>
         <br id="other-nav"><br>
-        <h1 class="title text-cursive">Batched & Boozy</h1>
+        <h1 class="title text-cursive">Batched</h1>
         <div id="other-list"></div>
         <br id="shot-nav"><br>
-        <h1 class="title text-cursive">Shots 4 Tots</h1>
-        <div id="shot-list"></div>
+        <!-- <h1 class="title text-cursive">Shots 4 Tots</h1>
+        <div id="shot-list"></div> -->
     </div>
   </div>
   <%- include ("../partials/xmaslights.ejs") %>
